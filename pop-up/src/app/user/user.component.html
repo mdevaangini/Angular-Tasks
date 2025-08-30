@@ -1,0 +1,19 @@
+<app-pop-up [description]="'User Information'" [id]="'user'">
+    <ng-container ngProjectAs="[slot='launchbtn']">
+        Add User Info
+    </ng-container>
+    <ng-container ngProjectAs="[slot='header']">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+    </ng-container>
+    <ng-container ngProjectAs="[slot='body']">
+        <form>
+            <input type="text" [(ngModel)]="username" name="username" placeholder="Enter username">
+            <input type="email" [(ngModel)]="email" name="email" placeholder="Enter email">
+        </form>
+    </ng-container>
+
+    <ng-container ngProjectAs="[slot='footer']">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Save changes</button>
+    </ng-container>
+</app-pop-up>
