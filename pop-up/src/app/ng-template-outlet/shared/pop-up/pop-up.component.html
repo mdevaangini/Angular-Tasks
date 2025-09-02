@@ -2,7 +2,10 @@
 
 <div class="m-2">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#' + id()">
-        <ng-content select="[slot='launchbtn']" />
+        <ng-container *ngTemplateOutlet="launchBtn() || defaultBtn"></ng-container>
+        <ng-template #defaultBtn>
+            Default Button
+        </ng-template>
     </button>
 
     <div class="modal fade" [id]="id()" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -11,20 +14,25 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        <ng-content select="[slot='header']" />
+                        <ng-container *ngTemplateOutlet="modalHeader() || defaultHeader"></ng-container>
+                        <ng-template #defaultHeader>
+                            Default Header
+                        </ng-template>
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <ng-content select="[slot='body']">
-                        No Content..
-                    </ng-content>
+                    <ng-container *ngTemplateOutlet="modalBody() || defaultBody">
+                    </ng-container>
+                    <ng-template #defaultBody>
+                        Default Body
+                    </ng-template>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         (click)="closeModal()">Close</button>
-                    <ng-content select="[slot='footer']" />
+                    <ng-container *ngTemplateOutlet="modalFooter()"></ng-container>
                 </div>
             </div>
         </div>

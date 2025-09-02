@@ -1,9 +1,9 @@
-<app-pop-up [description]="'User Information'" [id]="'user'">
+<app-pop-up [description]="'User Information'" [id]="'user'" (close)="closeBtn($event)" [(closed)]="modalClose">
     <ng-container ngProjectAs="[slot='launchbtn']">
         Add User Info
     </ng-container>
     <ng-container ngProjectAs="[slot='header']">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+        Add User
     </ng-container>
     <ng-container ngProjectAs="[slot='body']">
         <form>
@@ -13,7 +13,6 @@
     </ng-container>
 
     <ng-container ngProjectAs="[slot='footer']">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="save()">Save changes</button>
     </ng-container>
 </app-pop-up>

@@ -1,8 +1,9 @@
-import { Component, input, model, output } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, input, model, output, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-pop-up',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './pop-up.component.html',
   styleUrl: './pop-up.component.scss',
 })
@@ -11,6 +12,11 @@ export class PopUpComponent {
   id = input.required();
   closed = model<boolean>();
   close = output<boolean>();
+
+  launchBtn = input<TemplateRef<any> | null>(null);
+  modalHeader = input<TemplateRef<any> | null>(null);
+  modalBody = input<TemplateRef<any> | null>(null);
+  modalFooter = input<TemplateRef<any> | null>(null);
 
   ngOnInit() {
     console.log(this.closed());
