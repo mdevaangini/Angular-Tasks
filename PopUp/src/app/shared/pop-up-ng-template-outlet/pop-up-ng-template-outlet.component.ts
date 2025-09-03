@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   computed,
@@ -9,30 +10,24 @@ import {
 
 @Component({
   selector: 'app-pop-up-ng-template-outlet',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './pop-up-ng-template-outlet.component.html',
   styleUrl: './pop-up-ng-template-outlet.component.scss',
 })
 export class PopUpNgTemplateOutletComponent {
   /**
-   * @description -  for heading
+   * @id -  To differentiate the modals
    */
-  description = input<string>('');
+
   id = input.required();
-  closed = model<boolean>();
-  close = output<boolean>();
+  close = output<any>();
 
   launchBtn = input<TemplateRef<any> | null>(null);
   modalHeader = input<TemplateRef<any> | null>(null);
   modalBody = input<TemplateRef<any> | null>(null);
   modalFooter = input<TemplateRef<any> | null>(null);
 
-  isShow = computed(() => {
-    this.closed();
-  });
-
-  closeModal() {
-    this.closed.set(true);
-    this.close.emit(true);
+  closeModal(id: any) {
+    this.close.emit({ id: id, status: true });
   }
 }

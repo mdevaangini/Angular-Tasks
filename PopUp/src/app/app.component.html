@@ -1,44 +1,45 @@
-<app-pop-up-ng-template-outlet [description]="'User Information'" [id]="'user'" (close)="closeBtn($event)"
-  [(closed)]="modalClose" [launchBtn]="launchBtn" [modalHeader]="modalHeader" [modalBody]="modalBody"
-  [modalFooter]="modalFooter">
-  <ng-template #launchBtn>
-    Add User Info
-  </ng-template>
-  <ng-template #modalHeader>
-    Add User
-  </ng-template>
-  <ng-template #modalBody>
-    <form>
-      <input type="text" [(ngModel)]="username" name="username" placeholder="Enter username">
-      <input type="email" [(ngModel)]="email" name="email" placeholder="Enter email">
-    </form>
-  </ng-template>
-
-  <ng-template #modalFooter let-close="close">
-    <button type="button" class="btn btn-primary" (click)="save();close()">Save changes</button>
-  </ng-template>
-</app-pop-up-ng-template-outlet>
-
-
-<hr>
-
-
-<app-pop-up-ng-content [description]="'User Information'" [id]="'user'" (close)="closeBtn($event)"
-  [(closed)]="modalClose">
+<h2>Create an account</h2>
+<app-pop-up-ng-content [id]="'user-content'" (close)="closeBtn($event)">
   <ng-container ngProjectAs="[slot='launchbtn']">
-    Add User Info
+    Create User
   </ng-container>
   <ng-container ngProjectAs="[slot='header']">
-    Add User
+    Create User Info
   </ng-container>
   <ng-container ngProjectAs="[slot='body']">
-    <form>
-      <input type="text" [(ngModel)]="username" name="username" placeholder="Enter username">
-      <input type="email" [(ngModel)]="email" name="email" placeholder="Enter email">
+    <form #form="ngForm">
+      <input class="form-control mb-3" type="text" [(ngModel)]="username" name="username" placeholder="Enter username">
+      <input class="form-control mb-3" type="email" [(ngModel)]="email" name="email" placeholder="Enter email">
+      <input class="form-control mb-3" type="password" [(ngModel)]="password" name="password"
+        placeholder="Enter password">
     </form>
   </ng-container>
 
   <ng-container ngProjectAs="[slot='footer']">
-    <button type="button" class="btn btn-primary" (click)="save()">Save changes</button>
+    <button type="button" class="btn btn-primary" (click)="create(form)">Create</button>
   </ng-container>
 </app-pop-up-ng-content>
+
+<hr>
+<hr>
+
+<h2>Log In</h2>
+<app-pop-up-ng-template-outlet [id]="'user-template'" (close)="closeBtn($event)" [launchBtn]="launchBtn"
+  [modalHeader]="modalHeader" [modalBody]="modalBody" [modalFooter]="modalFooter">
+  <ng-template #launchBtn>
+    User Login
+  </ng-template>
+  <ng-template #modalHeader>
+    Login User Info
+  </ng-template>
+  <ng-template #modalBody>
+    <form [formGroup]="loginForm">
+      <input class="form-control mb-3" type="text" placeholder="Enter username" formControlName="loginUsername" />
+      <input class="form-control mb-3" type="password" placeholder="Enter password" formControlName="loginPassword" />
+    </form>
+  </ng-template>
+
+  <ng-template #modalFooter let-close="close">
+    <button type="button" class="btn btn-primary" (click)="save();close()">Log In</button>
+  </ng-template>
+</app-pop-up-ng-template-outlet>

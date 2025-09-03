@@ -1,4 +1,11 @@
-import { Component, input, model, output } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  model,
+  output,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pop-up-ng-content',
@@ -7,16 +14,22 @@ import { Component, input, model, output } from '@angular/core';
   styleUrl: './pop-up-ng-content.component.scss',
 })
 export class PopUpNgContentComponent {
-  description = input<string>('');
+  /**
+   * @id -  To differentiate the modals
+   */
+
   id = input.required();
   closed = model<boolean>();
-  close = output<boolean>();
+  close = output<any>();
+  isShow = signal(false);
 
-  ngOnInit() {
-    console.log(this.closed());
-  }
-  closeModal() {
-    this.closed.set(true);
-    this.close.emit(true);
+  isCLosed = computed(() => {
+    if (this.closed()) {
+      this.isShow.set(true);
+    }
+  });
+
+  closeModal(id: string) {
+    this.close.emit({ id: id, status: true });
   }
 }
