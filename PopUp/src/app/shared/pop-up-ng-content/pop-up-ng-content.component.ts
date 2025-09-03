@@ -1,12 +1,12 @@
 import { Component, input, model, output } from '@angular/core';
 
 @Component({
-  selector: 'app-pop-up',
+  selector: 'app-pop-up-ng-content',
   imports: [],
-  templateUrl: './pop-up.component.html',
-  styleUrl: './pop-up.component.scss',
+  templateUrl: './pop-up-ng-content.component.html',
+  styleUrl: './pop-up-ng-content.component.scss',
 })
-export class PopUpComponent {
+export class PopUpNgContentComponent {
   description = input<string>('');
   id = input.required();
   closed = model<boolean>();

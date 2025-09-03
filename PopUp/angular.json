@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pop-up": {
+    "PopUp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "pop-up:build:production"
+              "buildTarget": "PopUp:build:production"
             },
             "development": {
-              "buildTarget": "pop-up:build:development"
+              "buildTarget": "PopUp:build:development"
             }
           },
           "defaultConfiguration": "development"
