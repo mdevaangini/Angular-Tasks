@@ -1,10 +1,12 @@
 import {
   Component,
   computed,
+  ElementRef,
   input,
   model,
   output,
   signal,
+  viewChild,
 } from '@angular/core';
 
 @Component({
@@ -21,15 +23,14 @@ export class PopUpNgContentComponent {
   id = input.required();
   closed = model<boolean>();
   close = output<any>();
-  isShow = signal(false);
 
-  isCLosed = computed(() => {
-    if (this.closed()) {
-      this.isShow.set(true);
-    }
-  });
+  closeBtn = viewChild('closebtn', { read: ElementRef<HTMLButtonElement> });
 
-  closeModal(id: string) {
+  closeModal(id: any) {
     this.close.emit({ id: id, status: true });
+  }
+
+  triggerClose() {
+    this.closeBtn()?.nativeElement.click();
   }
 }

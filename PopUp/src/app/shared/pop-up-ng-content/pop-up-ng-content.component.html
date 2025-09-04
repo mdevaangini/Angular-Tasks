@@ -20,7 +20,7 @@
                     </ng-content>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    <button #closebtn type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         (click)="closeModal(id())">Close</button>
                     <ng-content select="[slot='footer']" />
                 </div>
