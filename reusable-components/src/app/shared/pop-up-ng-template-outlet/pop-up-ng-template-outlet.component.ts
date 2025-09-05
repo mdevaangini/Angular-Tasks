@@ -16,7 +16,7 @@ import {
 })
 export class PopUpNgTemplateOutletComponent {
   /**
-   * @id -  To differentiate the modals
+   * @description -  To differentiate the modals
    */
 
   id = input.required();
