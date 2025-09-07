@@ -13,6 +13,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { TableComponent } from './shared/table/table.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import {
     PopUpNgContentComponent,
     ReactiveFormsModule,
     FormsModule,
+    TableComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
