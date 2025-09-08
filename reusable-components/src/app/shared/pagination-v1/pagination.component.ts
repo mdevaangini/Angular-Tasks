@@ -1,4 +1,11 @@
-import { Component, computed, input, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  input,
+  OnInit,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -18,8 +25,10 @@ export class PaginationComponent {
     return [...Array(count).keys()].map((i) => i + 1);
   });
 
-  ngOnInit() {
-    this.activeCount.set(this.currentPage());
+  constructor() {
+    effect(() => {
+      this.activeCount.set(this.currentPage());
+    });
   }
 
   previous() {

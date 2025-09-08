@@ -1,1 +1,7 @@
-<app-pagination [totalRecords]="115" [recordsPerPage]="10" [currentPage]="3" />
+<!-- <app-pagination [totalRecords]="115" [recordsPerPage]="10" [currentPage]="3" /> -->
+
+<hr>
+<hr>
+
+<p>Selected Page from Pagination : {{activePage}}</p>
+<app-pagination-v2 [totalRecords]="115" [recordsPerPage]="recordsPerPage" [(page)]="activePage" />
