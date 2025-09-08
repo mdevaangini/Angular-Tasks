@@ -3,4 +3,6 @@
 @let isActive = count === activeCount();
 <button class="pagination-count" [class.active]="isActive" (click)="onPageClick(count)">{{count}}</button>
 }
+
+
 <button class="pagination-count" (click)="next()" [disabled]="activeCount() >= totalCounts().length">&gt;</button>
