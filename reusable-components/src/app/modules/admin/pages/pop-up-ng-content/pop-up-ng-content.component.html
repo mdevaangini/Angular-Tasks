@@ -1,0 +1,22 @@
+<h2>Create an account</h2>
+<app-pop-up-ng-content [id]="'user-content'" (close)="closeBtn($event)">
+    <ng-container ngProjectAs="[slot='launchbtn']">
+        Create User
+    </ng-container>
+    <ng-container ngProjectAs="[slot='header']">
+        Create User Info
+    </ng-container>
+    <ng-container ngProjectAs="[slot='body']">
+        <form #form="ngForm">
+            <input class="form-control mb-3" type="text" [(ngModel)]="username" name="username"
+                placeholder="Enter username">
+            <input class="form-control mb-3" type="email" [(ngModel)]="email" name="email" placeholder="Enter email">
+            <input class="form-control mb-3" type="password" [(ngModel)]="password" name="password"
+                placeholder="Enter password">
+        </form>
+    </ng-container>
+
+    <ng-container ngProjectAs="[slot='footer']">
+        <button type="button" class="btn btn-primary" (click)="create(form)">Create</button>
+    </ng-container>
+</app-pop-up-ng-content>

@@ -1,51 +1,11 @@
-<h2>Create an account</h2>
-<app-pop-up-ng-content [id]="'user-content'" (close)="closeBtn($event)">
-  <ng-container ngProjectAs="[slot='launchbtn']">
-    Create User
+<app-nav-bar>
+  <!-- <ng-container ngProjectAs="[slot='dropdown-name']">
+    Popup
   </ng-container>
-  <ng-container ngProjectAs="[slot='header']">
-    Create User Info
-  </ng-container>
-  <ng-container ngProjectAs="[slot='body']">
-    <form #form="ngForm">
-      <input class="form-control mb-3" type="text" [(ngModel)]="username" name="username" placeholder="Enter username">
-      <input class="form-control mb-3" type="email" [(ngModel)]="email" name="email" placeholder="Enter email">
-      <input class="form-control mb-3" type="password" [(ngModel)]="password" name="password"
-        placeholder="Enter password">
-    </form>
-  </ng-container>
+  <ng-container ngProjectAs="[slot='dropdown-items']">
+    <li><a class="dropdown-item" href="#">Via ngContent</a></li>
+    <li><a class="dropdown-item" href="#">Via ngTemplateOutlet</a></li>
+  </ng-container> -->
+</app-nav-bar>
 
-  <ng-container ngProjectAs="[slot='footer']">
-    <button type="button" class="btn btn-primary" (click)="create(form)">Create</button>
-  </ng-container>
-</app-pop-up-ng-content>
-
-<hr>
-<hr>
-
-<h2>Log In</h2>
-<app-pop-up-ng-template-outlet [id]="'user-template'" (close)="closeBtn($event)" [launchBtn]="launchBtn"
-  [modalHeader]="modalHeader" [modalBody]="modalBody" [modalFooter]="modalFooter">
-  <ng-template #launchBtn>
-    User Login
-  </ng-template>
-  <ng-template #modalHeader>
-    Login User Info
-  </ng-template>
-  <ng-template #modalBody>
-    <form [formGroup]="loginForm">
-      <input class="form-control mb-3" type="text" placeholder="Enter username" formControlName="loginUsername" />
-      <input class="form-control mb-3" type="password" placeholder="Enter password" formControlName="loginPassword" />
-    </form>
-  </ng-template>
-
-  <ng-template #modalFooter let-close="close">
-    <button type="button" class="btn btn-primary" (click)="save();close()">Log In</button>
-  </ng-template>
-</app-pop-up-ng-template-outlet>
-
-
-<hr>
-<hr>
-
-<app-table></app-table>
+<router-outlet />

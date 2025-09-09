@@ -31,6 +31,7 @@ export class PaginationV2Component {
   }
 
   set selectCount(num: number) {
+    this.page.set(1);
     this._count.set(num);
   }
 

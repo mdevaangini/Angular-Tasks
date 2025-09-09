@@ -1,0 +1,21 @@
+<h2>Log In</h2>
+<app-pop-up-ng-template-outlet [id]="'user-template'" (close)="closeBtn($event)" [launchBtn]="launchBtn"
+    [modalHeader]="modalHeader" [modalBody]="modalBody" [modalFooter]="modalFooter">
+    <ng-template #launchBtn>
+        User Login
+    </ng-template>
+    <ng-template #modalHeader>
+        Login User Info
+    </ng-template>
+    <ng-template #modalBody>
+        <form [formGroup]="loginForm">
+            <input class="form-control mb-3" type="text" placeholder="Enter username" formControlName="loginUsername" />
+            <input class="form-control mb-3" type="password" placeholder="Enter password"
+                formControlName="loginPassword" />
+        </form>
+    </ng-template>
+
+    <ng-template #modalFooter let-close="close">
+        <button type="button" class="btn btn-primary" (click)="save();close()">Log In</button>
+    </ng-template>
+</app-pop-up-ng-template-outlet>
