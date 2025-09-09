@@ -14,6 +14,8 @@
     </ul>
 </nav>
 
+@if(recordsPerPage())
+{
 <div class="dropdown">
     <span class="m-2">Items per page :</span>
     <span>
@@ -24,3 +26,4 @@
         </select>
     </span>
 </div>
+}

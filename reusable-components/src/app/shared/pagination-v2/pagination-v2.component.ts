@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PaginationV2Component {
   totalRecords = input.required<number>();
-  recordsPerPage = input.required<any[]>();
+  recordsPerPage = input<any[]>();
   page = model.required<number>();
   _count = signal<number>(10);
 
@@ -25,7 +25,7 @@ export class PaginationV2Component {
     return [...Array(count).keys()].map((i) => i + 1);
   });
 
-  // [(ngModel)] can only bind to a property or a field
+  // [(ngModel)] can only bind to a property or a field so made get set
   get selectCount() {
     return this._count();
   }
