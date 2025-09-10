@@ -29,4 +29,9 @@ export const ADMIN_ROUTES: Route[] = [
         (m) => m.PaginationV2Page
       ),
   },
+  {
+    path: 'table',
+    loadComponent: () =>
+      import('./pages/table/table.component').then((m) => m.TablePage),
+  },
 ];

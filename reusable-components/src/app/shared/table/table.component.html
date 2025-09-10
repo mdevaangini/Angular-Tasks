@@ -1,0 +1,21 @@
+<div [style.margin]="tableMargin()">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @for(col of metaData();track col){
+                <th scope="col">{{col.header}}</th>
+                }
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @for(row of data();track row.serialNumber){
+            <tr>
+                <td>{{row.serialNumber}}</td>
+                <td>{{row.firstName}}</td>
+                <td>{{row.lastName}}</td>
+                <td>{{row.userHandle}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
