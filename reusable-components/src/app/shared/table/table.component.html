@@ -1,5 +1,6 @@
 <div [style.margin]="tableMargin()">
     <table class="table table-bordered">
+
         <thead>
             <tr>
                 @for(col of metaData();track col){
@@ -8,14 +9,14 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            @for(row of data();track row.serialNumber){
+            @for(row of data();track row){
             <tr>
-                <td>{{row.serialNumber}}</td>
-                <td>{{row.firstName}}</td>
-                <td>{{row.lastName}}</td>
-                <td>{{row.userHandle}}</td>
+                @for(col of metaData();track col){
+                <td>{{row[col.field]}}</td>
+                }
             </tr>
             }
         </tbody>
+
     </table>
 </div>

@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { TableMetaData } from '../model/table-metaData.interface';
 
 @Component({
   selector: 'app-table',
@@ -7,7 +8,7 @@ import { Component, input } from '@angular/core';
   styleUrl: './table.component.scss',
 })
 export class TableComponent {
-  metaData = input.required<any[]>();
+  metaData = input.required<TableMetaData[]>();
   data = input.required<any[]>();
   tableMargin = input<string>('10px');
 }

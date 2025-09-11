@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TableComponent } from '../../../../shared/table/table.component';
+import { TableMetaData } from '../../../../shared/model/table-metaData.interface';
 
 @Component({
   selector: 'app-table-page',
@@ -8,7 +9,7 @@ import { TableComponent } from '../../../../shared/table/table.component';
   styleUrl: './table.component.scss',
 })
 export class TablePage {
-  tableMetaData: any[] = [
+  tableMetaData: TableMetaData[] = [
     { field: 'serialNumber', header: 'Serial Number', sortable: true },
     { field: 'firstName', header: 'First Name', sortable: true },
     { field: 'lastName', header: 'Last Name', sortable: true },
