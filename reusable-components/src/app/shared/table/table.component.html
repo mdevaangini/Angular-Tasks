@@ -4,12 +4,20 @@
         <thead>
             <tr>
                 @for(col of metaData();track col){
-                <th scope="col">{{col.header}}</th>
+                <th scope="col">{{col.header}}
+                    @if(col.sortable){
+                    <i class="bi bi-sort-up" (click)="ascending(col)"></i>
+                    <i class="bi bi-sort-down" (click)="descending(col)"></i>
+                    }
+                </th>
+
                 }
             </tr>
+
         </thead>
+
         <tbody class="table-group-divider">
-            @for(row of data();track row){
+            @for(row of intialData();track row){
             <tr>
                 @for(col of metaData();track col){
                 <td>{{row[col.field]}}</td>

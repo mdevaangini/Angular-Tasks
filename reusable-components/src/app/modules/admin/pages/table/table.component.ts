@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { TableComponent } from '../../../../shared/table/table.component';
 import { TableMetaData } from '../../../../shared/model/table-metaData.interface';
 
@@ -29,5 +29,18 @@ export class TablePage {
       lastName: 'Sharma',
       userHandle: '@ramSharma',
     },
+    {
+      serialNumber: 3,
+      firstName: 'Harry',
+      lastName: 'Potter',
+      userHandle: '@harryPotter',
+    },
+  ];
+
+  sortDirection: any[] = [
+    { serialNumber: 'desc' },
+    { firstName: 'asc' },
+    { lastName: 'asc' },
+    { userHandle: 'asc' },
   ];
 }
