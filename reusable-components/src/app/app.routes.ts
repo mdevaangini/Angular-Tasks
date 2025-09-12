@@ -1,11 +1,7 @@
 import { Routes } from '@angular/router';
-import { TableComponent } from './shared/table/table.component';
+import { TableV1Component } from './shared/table-v1/table.component';
 
 export const routes: Routes = [
-  {
-    path: 'table',
-    loadComponent: () => TableComponent,
-  },
   {
     path: 'admin',
     loadChildren: () =>

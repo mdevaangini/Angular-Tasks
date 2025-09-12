@@ -27,13 +27,11 @@ export class PopUpNgContentPage {
 
   // Need to reset particular modal based on ID
   closeBtn(event: any) {
-    console.log(event);
     this.formRef()?.nativeElement.reset();
   }
 
   // Used with ng-content - got reference from child component(popupNgcontent) and then close() worked
   create(form: any) {
-    console.log('Creation info', form.value);
     this.child()?.triggerClose();
     form.reset();
   }

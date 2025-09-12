@@ -24,13 +24,11 @@ export class PopUpNgTemplateOutletPage {
 
   // Need to reset particular modal based on ID
   closeBtn(event: any) {
-    console.log(event);
     this.loginForm.reset();
   }
 
   // Used with ngTemplateOutlet - has close reference with context
   save() {
-    console.log('Login info', this.loginForm.value);
     this.loginForm.reset();
   }
 }

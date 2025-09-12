@@ -1,22 +1,18 @@
-export function sortColumn(col: any, fullData: any[], order: 'asc' | 'desc') {
-  // console.log(data);
-  // console.log(data[col.field]);
-  // console.log(col.field);
-  // console.log(fullData);
+export function sortColumnV1(col: any, fullData: any[], order: 'asc' | 'desc') {
+  fullData.sort((a, b) => {
+    const key = col.field;
+    const dir = order;
+    const valA = a[key];
+    const valB = b[key];
 
-  const values = fullData.map((row) => row[col.field]);
-
-  console.log(values);
-
-  values.sort((a, b) => {
-    if (typeof a === 'string' && typeof b === 'string') {
-      return order === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
+    if (typeof valA === 'string' && typeof valB === 'string') {
+      return dir === 'asc'
+        ? valA.localeCompare(valB)
+        : valB.localeCompare(valA);
     }
-    return order === 'asc' ? a - b : b - a;
+
+    return dir === 'asc' ? valA - valB : valB - valA;
   });
 
-  return fullData.map((row, i) => ({
-    ...row,
-    [col.field]: values[i],
-  }));
+  return fullData;
 }

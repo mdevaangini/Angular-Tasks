@@ -1,0 +1,30 @@
+<div [style.margin]="tableMargin()">
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                @for(col of metaData();track col){
+                <th scope="col">{{col.header}}
+                    @if(col.sortable){
+                    <i class="bi bi-sort-up" (click)="onClick(col,'asc')"></i>
+                    <i class="bi bi-sort-down" (click)="onClick(col,'desc')"></i>
+                    }
+                </th>
+
+                }
+            </tr>
+
+        </thead>
+
+        <tbody class="table-group-divider">
+            @for(row of data();track row){
+            <tr>
+                @for(col of metaData();track col){
+                <td>{{row[col.field]}}</td>
+                }
+            </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

@@ -30,8 +30,13 @@ export const ADMIN_ROUTES: Route[] = [
       ),
   },
   {
-    path: 'table',
+    path: 'table-v1',
     loadComponent: () =>
-      import('./pages/table/table.component').then((m) => m.TablePage),
+      import('./pages/table-v1/table.component').then((m) => m.TableV1Page),
+  },
+  {
+    path: 'table-v2',
+    loadComponent: () =>
+      import('./pages/table-v2/table-v2.component').then((m) => m.TableV2Page),
   },
 ];

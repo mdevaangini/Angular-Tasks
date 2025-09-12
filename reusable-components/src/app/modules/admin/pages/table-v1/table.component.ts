@@ -1,14 +1,14 @@
 import { Component, model } from '@angular/core';
-import { TableComponent } from '../../../../shared/table/table.component';
+import { TableV1Component } from '../../../../shared/table-v1/table.component';
 import { TableMetaData } from '../../../../shared/model/table-metaData.interface';
 
 @Component({
-  selector: 'app-table-page',
-  imports: [TableComponent],
+  selector: 'app-table-v1-page',
+  imports: [TableV1Component],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TablePage {
+export class TableV1Page {
   tableMetaData: TableMetaData[] = [
     { field: 'serialNumber', header: 'Serial Number', sortable: true },
     { field: 'firstName', header: 'First Name', sortable: true },

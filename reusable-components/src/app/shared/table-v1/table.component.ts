@@ -1,14 +1,14 @@
 import { Component, input, model, signal } from '@angular/core';
 import { TableMetaData } from '../model/table-metaData.interface';
-import { sortColumn } from '../helpers/utils';
+import { sortColumnV1 } from '../helpers/utils';
 
 @Component({
-  selector: 'app-table',
+  selector: 'app-table-v1',
   imports: [],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent {
+export class TableV1Component {
   metaData = input.required<TableMetaData[]>();
   data = input.required<any[]>();
   sortDirection = model<any[]>();
@@ -17,14 +17,13 @@ export class TableComponent {
 
   ngOnInit() {
     this.intialData.set([...this.data()]);
-    console.log(this.intialData());
   }
 
   ascending(col: any) {
-    this.intialData.set(sortColumn(col, this.intialData(), 'asc'));
+    this.intialData.set(sortColumnV1(col, this.intialData(), 'asc'));
   }
 
   descending(col: any) {
-    this.intialData.set(sortColumn(col, this.intialData(), 'desc'));
+    this.intialData.set(sortColumnV1(col, this.intialData(), 'desc'));
   }
 }
