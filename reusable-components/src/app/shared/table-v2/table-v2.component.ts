@@ -1,5 +1,6 @@
 import { Component, effect, input, model, signal } from '@angular/core';
 import { TableMetaData } from '../model/table-metaData.interface';
+import { sortInfo } from '../model/sort-info.interface';
 
 @Component({
   selector: 'app-table-v2',
@@ -10,7 +11,7 @@ import { TableMetaData } from '../model/table-metaData.interface';
 export class TableV2Component {
   metaData = input.required<TableMetaData[]>();
   data = input.required<any[]>();
-  sort = model<any>();
+  sort = model<sortInfo>();
   tableMargin = input<string>('10px');
 
   onClick(col: any, order: 'asc' | 'desc') {

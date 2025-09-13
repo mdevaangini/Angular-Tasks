@@ -44,20 +44,22 @@ export class TableV2Page {
 
   constructor() {
     effect(() => {
-      this.tableData.sort((a, b) => {
-        const key = this.sort().sortKey;
-        const dir = this.sort().sortDirection;
-        const valA = a[key];
-        const valB = b[key];
+      if (this.sort().sortDirection && this.sort().sortKey) {
+        this.tableData.sort((a, b) => {
+          const key = this.sort().sortKey;
+          const dir = this.sort().sortDirection;
+          const valA = a[key];
+          const valB = b[key];
 
-        if (typeof valA === 'string' && typeof valB === 'string') {
-          return dir === 'asc'
-            ? valA.localeCompare(valB)
-            : valB.localeCompare(valA);
-        }
+          if (typeof valA === 'string' && typeof valB === 'string') {
+            return dir === 'asc'
+              ? valA.localeCompare(valB)
+              : valB.localeCompare(valA);
+          }
 
-        return dir === 'asc' ? valA - valB : valB - valA;
-      });
+          return dir === 'asc' ? valA - valB : valB - valA;
+        });
+      }
     });
   }
 }
