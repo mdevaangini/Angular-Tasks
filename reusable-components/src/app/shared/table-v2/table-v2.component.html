@@ -22,14 +22,19 @@
                 @for(col of metaData();track col){
 
                 <td>
-                    @if (findTemplate(col.field)) {
-                    <ng-container [ngTemplateOutlet]="findTemplate(col.field)?.template!"
-                        [ngTemplateOutletContext]="{ rowData: row }">
+                    @if(findTemplate(col.field)) {
+                    <ng-container *ngTemplateOutlet="findTemplate(col.field)?.template!; context: { rowData: row }">
                     </ng-container>
-                    } @else {
+                    }
+                    @else if(findComponent(col.field)) {
+                    <ng-container *ngComponentOutlet="findComponent(col.field); inputs: { rowData: row}">
+                    </ng-container>
+                    }
+                    @else {
                     {{ row[col.field] }}
                     }
                 </td>
+
 
                 }
             </tr>

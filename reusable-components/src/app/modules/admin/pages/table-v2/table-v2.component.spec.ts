@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TableV2Component } from './table-v2.component';
+import { TableV2Component } from '../../../../shared/table-v2/table-v2.component';
 
 describe('TableV2Component', () => {
   let component: TableV2Component;
@@ -8,9 +7,8 @@ describe('TableV2Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableV2Component]
-    })
-    .compileComponents();
+      imports: [TableV2Component],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TableV2Component);
     component = fixture.componentInstance;

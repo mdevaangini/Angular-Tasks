@@ -10,9 +10,8 @@ import {
 import { TableMetaData } from '../model/table-metaData.interface';
 import { sortInfo } from '../model/sort-info.interface';
 import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import { TemplateMetaDataComponent } from '../../modules/admin/components/template-meta-data/template-meta-data.component';
-import { NgComponentOutlet } from '../../../../node_modules/@angular/common/common_module.d-NEF7UaHr';
 
 @Component({
   selector: 'app-table-v2',
@@ -41,7 +40,8 @@ export class TableV2Component {
     return this.columnTemplates().find((i) => i.templateMetaData() === field);
   }
 
-  findComponent(field: any) {
-    return this.columnComponent().find((i) => i.column() === field);
+  findComponent(field: string) {
+    const cmp = this.columnComponent().find((i) => i.column() === field);
+    return cmp ? TemplateMetaDataComponent : null;
   }
 }

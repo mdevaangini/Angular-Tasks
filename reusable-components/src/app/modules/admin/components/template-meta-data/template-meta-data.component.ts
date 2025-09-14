@@ -7,5 +7,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './template-meta-data.component.scss',
 })
 export class TemplateMetaDataComponent {
-  column = input();
+  column = input<string>();
+  rowData = input<any>();
 }

@@ -2,4 +2,12 @@
     <ng-template templateMetaData="serialNumber" let-rowData="rowData">
         {{ rowData.serialNumber % 2 === 0 ? 'Even' : 'Odd' }}
     </ng-template>
+    <app-template-meta-data [column]="'lastName'">
+    </app-template-meta-data>
 </app-table-v2>
+
+
+
+
+<!-- <app-template-meta-data [column]="'userhandle'">
+    </app-template-meta-data> Q -> i need to make another component for different column -->
