@@ -20,7 +20,17 @@
             @for(row of data();track row){
             <tr>
                 @for(col of metaData();track col){
-                <td>{{row[col.field]}}</td>
+
+                <td>
+                    @if (findTemplate(col.field)) {
+                    <ng-container [ngTemplateOutlet]="findTemplate(col.field)?.template!"
+                        [ngTemplateOutletContext]="{ rowData: row }">
+                    </ng-container>
+                    } @else {
+                    {{ row[col.field] }}
+                    }
+                </td>
+
                 }
             </tr>
             }
@@ -28,3 +38,13 @@
 
     </table>
 </div>
+
+
+<!-- Here’s what Angular did:
+
+ <ng-container *ngTemplateOutlet="findTemplate(col.field)?.template!" ; context:{rowData:row}></ng-container>
+
+@if → wrapped your block in a hidden <ng-template>.
+*ngTemplateOutlet → also tried to wrap <ng-container> in its own hidden <ng-template>.
+
+Result: nested templates that didn’t render the way you expected. -->
