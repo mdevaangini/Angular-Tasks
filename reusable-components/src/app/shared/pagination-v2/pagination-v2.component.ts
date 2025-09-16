@@ -4,6 +4,7 @@ import {
   effect,
   input,
   model,
+  output,
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,8 @@ export class PaginationV2Component {
   totalRecords = input.required<number>();
   recordsPerPage = input<any[]>();
   page = model.required<number>();
-  _count = signal<number>(10);
+  _count = signal<number>(5);
+  selectedCount = output<number>();
 
   totalCounts = computed(() => {
     let count = Math.ceil(this.totalRecords() / this.selectCount);
@@ -33,6 +35,7 @@ export class PaginationV2Component {
   set selectCount(num: number) {
     this.page.set(1);
     this._count.set(num);
+    this.selectedCount.emit(this._count());
   }
 
   previous() {

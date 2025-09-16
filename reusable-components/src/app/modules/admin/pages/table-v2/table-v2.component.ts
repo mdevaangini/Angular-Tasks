@@ -2,15 +2,11 @@ import { Component, computed, effect, signal } from '@angular/core';
 import { TableMetaData } from '../../../../shared/model/table-metaData.interface';
 import { TableV2Component } from '../../../../shared/table-v2/table-v2.component';
 import { TemplateMetaDataDirective } from '../../../../shared/directives/template-meta-data.directive';
-import { TemplateMetaDataComponent } from '../../components/template-meta-data/template-meta-data.component';
+import { TableColumnComponent } from './components/table-column/table-column.component';
 
 @Component({
   selector: 'app-table-v2-page',
-  imports: [
-    TableV2Component,
-    TemplateMetaDataDirective,
-    TemplateMetaDataComponent,
-  ],
+  imports: [TableV2Component, TemplateMetaDataDirective, TableColumnComponent],
   templateUrl: './table-v2.component.html',
   styleUrl: './table-v2.component.scss',
 })

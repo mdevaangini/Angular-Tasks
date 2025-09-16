@@ -1,15 +1,15 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item" [class.disabled]="page() <= 1">
-            <a class="page-link" href="#" (click)="previous()">Previous</a>
+            <a class="page-link" (click)="previous()">Previous</a>
         </li>
         @for(count of totalCounts(); track count){
         @let isActive = count === page();
-        <li class="page-item"><a class="page-link" href="#" [class.active]="isActive"
-                (click)="onPageClick(count)">{{count}}</a></li>
+        <li class="page-item"><a class="page-link" [class.active]="isActive" (click)="onPageClick(count)">{{count}}</a>
+        </li>
         }
         <li class="page-item" [class.disabled]="page() >= totalCounts().length">
-            <a class="page-link" href="#" (click)="next()">Next</a>
+            <a class="page-link" (click)="next()">Next</a>
         </li>
     </ul>
 </nav>

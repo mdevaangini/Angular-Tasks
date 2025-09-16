@@ -17,7 +17,7 @@
         </thead>
 
         <tbody class="table-group-divider">
-            @for(row of data();track row){
+            @for(row of limitedData();track row.serialNumber){
             <tr>
                 @for(col of metaData();track col){
 
@@ -43,13 +43,3 @@
 
     </table>
 </div>
-
-
-<!-- Here’s what Angular did:
-
- <ng-container *ngTemplateOutlet="findTemplate(col.field)?.template!" ; context:{rowData:row}></ng-container>
-
-@if → wrapped your block in a hidden <ng-template>.
-*ngTemplateOutlet → also tried to wrap <ng-container> in its own hidden <ng-template>.
-
-Result: nested templates that didn’t render the way you expected. -->

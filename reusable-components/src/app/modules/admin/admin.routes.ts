@@ -39,4 +39,11 @@ export const ADMIN_ROUTES: Route[] = [
     loadComponent: () =>
       import('./pages/table-v2/table-v2.component').then((m) => m.TableV2Page),
   },
+  {
+    path: 'table-pagination',
+    loadComponent: () =>
+      import(
+        './pages/table-with-pagination/table-with-pagination.component'
+      ).then((m) => m.TableWithPaginationPage),
+  },
 ];

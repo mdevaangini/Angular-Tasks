@@ -1,0 +1,5 @@
+@for(tmp of columnTemplate();track tmp)
+{
+<ng-container *ngTemplateOutlet="tmp; context: { rowData: rowData() }">
+</ng-container>
+}

@@ -7,29 +7,37 @@ import {
   model,
   signal,
 } from '@angular/core';
-import { TableMetaData } from '../model/table-metaData.interface';
-import { sortInfo } from '../model/sort-info.interface';
-import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
-import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import { TableColumnComponent } from '../../modules/admin/pages/table-v2/components/table-column/table-column.component';
+import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
+import { sortInfo } from '../model/sort-info.interface';
+import { TableMetaData } from '../model/table-metaData.interface';
+import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'app-table-v2',
+  selector: 'app-table-with-pagination',
   imports: [NgTemplateOutlet, NgComponentOutlet],
-  templateUrl: './table-v2.component.html',
-  styleUrl: './table-v2.component.scss',
+  templateUrl: './table-with-pagination.component.html',
+  styleUrl: './table-with-pagination.component.scss',
 })
-export class TableV2Component {
+export class TableWithPaginationComponent {
   metaData = input.required<TableMetaData[]>();
   data = input.required<any[]>();
   sort = model<sortInfo>();
   tableMargin = input<string>('10px');
+  pageFromPagination = input<any>(5);
+  activePage = input<number>(1);
 
   columnTemplates = contentChildren(TemplateMetaDataDirective);
   columnComponent = contentChildren(TableColumnComponent);
 
   templateHashMap = signal<any>({});
   componentHashMap = signal<any>({});
+
+  limitedData = computed(() => {
+    const start = (this.activePage() - 1) * this.pageFromPagination();
+    const end = +start + +this.pageFromPagination(); //Number conversion
+    return this.data().slice(start, end);
+  });
 
   ngAfterContentInit() {
     this.columnTemplates().forEach((i: any) => {
@@ -51,17 +59,4 @@ export class TableV2Component {
       sortKey: col.field,
     });
   }
-
-  /*
-Not good for performance: as it will run every time the UI renders
-
-  findTemplate(field: any) {
-    return this.columnTemplates().find((i) => i.templateMetaData() === field);
-  }
-
-  findComponent(field: string) {
-    const cmp = this.columnComponent().find((i) => i.column() === field);
-    return cmp ? TemplateMetaDataComponent : null;
-  }
-    */
 }
