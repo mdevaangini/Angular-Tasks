@@ -18,10 +18,4 @@ export class TableColumnComponent {
   columnTemplate = contentChildren(TemplateRef<any>);
   column = input<string>();
   rowData = input<any>();
-
-  constructor() {
-    effect(() => {
-      console.log(this.rowData());
-    });
-  }
 }
