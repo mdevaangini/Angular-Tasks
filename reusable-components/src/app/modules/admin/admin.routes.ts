@@ -46,4 +46,9 @@ export const ADMIN_ROUTES: Route[] = [
         './pages/table-with-pagination/table-with-pagination.component'
       ).then((m) => m.TableWithPaginationPage),
   },
+  {
+    path: 'tabs',
+    loadComponent: () =>
+      import('./pages/tabs/tabs.component').then((m) => m.TabsPage),
+  },
 ];
