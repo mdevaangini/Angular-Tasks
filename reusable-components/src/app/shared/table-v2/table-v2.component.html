@@ -17,17 +17,13 @@
         </thead>
 
         <tbody class="table-group-divider">
-            @for(row of data();track row){
+            @for(row of data();track row.serialNumber){
             <tr>
                 @for(col of metaData();track col){
 
                 <td>
                     @if(templateHashMap()[col.field]) {
                     <ng-container *ngTemplateOutlet="templateHashMap()[col.field]; context: { rowData: row }">
-                    </ng-container>
-                    }
-                    @else if(componentHashMap()[col.field]) {
-                    <ng-container *ngComponentOutlet="componentHashMap()[col.field]; inputs: { rowData: row}">
                     </ng-container>
                     }
                     @else {
@@ -43,7 +39,6 @@
 
     </table>
 </div>
-
 
 <!-- Here’s what Angular did:
 

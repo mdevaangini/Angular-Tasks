@@ -1,12 +1,12 @@
-<app-table-with-pagination [metaData]="tableMetaData" [data]="sortedTableData()" [(sort)]="sort" [tableMargin]="'50px'"
-    [pageFromPagination]="pageFromPagination()" [activePage]="activePage()">
+<app-table-v2 [metaData]="tableMetaData" [data]="tableService.paginatedSortedData()" [(sort)]="tableService.sort"
+    [tableMargin]="'50px'">
     <ng-template templateMetaData="serialNumber" let-rowData="rowData">
         {{ rowData.serialNumber}}
     </ng-template>
     <ng-template templateMetaData="firstName" let-rowData="rowData">
         {{ rowData.firstName === 'Devaangini' ? 'Good' : 'Bad' }}
     </ng-template>
-</app-table-with-pagination>
+</app-table-v2>
 
-<app-pagination-v2 [totalRecords]="tableData().length" [recordsPerPage]="recordsPerPage" [(page)]="activePage"
-    (selectedCount)="readDataPerPage($event)" />
+<app-pagination-v2 [totalRecords]="tableService.tableData().length" [recordsPerPage]="tableService.recordsPerPage()"
+    [(page)]="tableService.activePage" (selectedCount)="readDataPerPage($event)" />

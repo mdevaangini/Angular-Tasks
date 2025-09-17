@@ -1,5 +1,7 @@
-@for(tmp of columnTemplate();track tmp)
+@if(colTemplate())
 {
-<ng-container *ngTemplateOutlet="tmp; context: { rowData: rowData() }">
+<ng-container *ngTemplateOutlet="colTemplate(); context: { rowData: rowData() }">
 </ng-container>
 }
+
+//will discuss the use case of it in stepper task

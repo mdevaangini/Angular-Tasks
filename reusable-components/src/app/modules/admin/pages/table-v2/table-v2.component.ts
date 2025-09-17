@@ -6,7 +6,7 @@ import { TableColumnComponent } from './components/table-column/table-column.com
 
 @Component({
   selector: 'app-table-v2-page',
-  imports: [TableV2Component, TemplateMetaDataDirective, TableColumnComponent],
+  imports: [TableV2Component, TemplateMetaDataDirective],
   templateUrl: './table-v2.component.html',
   styleUrl: './table-v2.component.scss',
 })

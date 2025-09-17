@@ -5,14 +5,4 @@
     <ng-template templateMetaData="firstName" let-rowData="rowData">
         {{ rowData.firstName === 'Devaangini' ? 'Good' : 'Bad' }}
     </ng-template>
-    <app-column [column]="'lastName'">
-        <ng-template let-rowData="rowData">
-            {{ rowData.lastName === 'Mehta' ? 'Developer' : 'QA' }}
-        </ng-template>
-    </app-column>
-    <app-column [column]="'userHandle'">
-        <ng-template let-rowData="rowData">
-            {{ rowData.userHandle === '@mdevaangini' ? 'Git' : 'Github' }}
-        </ng-template>
-    </app-column>
 </app-table-v2>

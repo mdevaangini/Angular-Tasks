@@ -16,6 +16,7 @@ import {
 })
 export class TableColumnComponent {
   columnTemplate = contentChildren(TemplateRef<any>);
-  column = input<string>();
   rowData = input<any>();
+  column = input<any>();
+  colTemplate = input<TemplateRef<any> | null>(null);
 }

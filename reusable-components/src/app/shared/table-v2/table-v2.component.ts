@@ -15,7 +15,7 @@ import { TableColumnComponent } from '../../modules/admin/pages/table-v2/compone
 
 @Component({
   selector: 'app-table-v2',
-  imports: [NgTemplateOutlet, NgComponentOutlet],
+  imports: [NgTemplateOutlet],
   templateUrl: './table-v2.component.html',
   styleUrl: './table-v2.component.scss',
 })
@@ -24,7 +24,6 @@ export class TableV2Component {
   data = input.required<any[]>();
   sort = model<sortInfo>();
   tableMargin = input<string>('10px');
-
   columnTemplates = contentChildren(TemplateMetaDataDirective);
   columnComponent = contentChildren(TableColumnComponent);
 
@@ -35,12 +34,6 @@ export class TableV2Component {
     this.columnTemplates().forEach((i: any) => {
       this.templateHashMap.update((j) => {
         return { ...j, [i.templateMetaData()]: i.template };
-      });
-    });
-
-    this.columnComponent().forEach((i: any) => {
-      this.componentHashMap.update((j) => {
-        return { ...j, [i.column()]: TableColumnComponent };
       });
     });
   }
