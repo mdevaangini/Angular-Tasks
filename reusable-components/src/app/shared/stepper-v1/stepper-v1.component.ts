@@ -6,12 +6,12 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { StepperInfo } from '../model/stepper-info.interface';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
 
 @Component({
   selector: 'dm-stepper-v1',
-  imports: [CommonModule],
+  imports: [NgTemplateOutlet],
   templateUrl: './stepper-v1.component.html',
   styleUrl: './stepper-v1.component.scss',
 })

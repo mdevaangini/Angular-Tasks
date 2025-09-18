@@ -1,33 +1,24 @@
 <div class="stepper-container">
     <div class="stepper">
-        <div class="step" *ngFor="let step of stepperMetaData(); let i = index"
-            [class.active]="step.key === currentStep()">
+        @for (step of stepperMetaData(); track step.serialNumber; let i = $index) {
+        <div class="step" [class.active]="step.key === currentStep()">
             <div class="circle">{{ i + 1 }}</div>
             <div class="label" (click)="onClick(step)">{{ step.heading }}</div>
-            <div class="line" *ngIf="i < stepperMetaData().length - 1"></div>
-        </div>
-    </div>
 
-    <div class="stepper-content">
-        <ng-container *ngTemplateOutlet="stepTemplate()"></ng-container>
+            @if(i < stepperMetaData().length - 1) { <div class="line">
+        </div> }
     </div>
-
-    <div class="step-controls">
-        <button (click)="prev()">Previous</button>
-        <button (click)="next()">Next</button>
-    </div>
-
+    }
 </div>
 
-
-
-<!-- <div class="stepper">
-    @for (step of stepperMetaData(); track step.serialNumber; let i = $index) {
-    <div class="class">{{ i + 1 }}</div>
-    <div class="label">{{ step.heading }}</div>
-
-    @if (i < stepperMetaData().length - 1) { <div class="line">
+<div class="stepper-content">
+    <ng-container *ngTemplateOutlet="stepTemplate()"></ng-container>
 </div>
-}
-}
-</div> -->
+
+<div class="step-controls">
+    <button (click)="prev()" [disabled]="currentStep() === stepperMetaData()[0].key">Previous</button>
+    <button (click)="next()"
+        [disabled]="currentStep() === stepperMetaData()[stepperMetaData().length - 1].key">Next</button>
+</div>
+
+</div>
