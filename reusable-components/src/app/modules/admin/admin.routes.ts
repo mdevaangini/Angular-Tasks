@@ -56,4 +56,11 @@ export const ADMIN_ROUTES: Route[] = [
     loadComponent: () =>
       import('./pages/tab-v2/tab-2.component').then((m) => m.Tab2Page),
   },
+  {
+    path: 'stepper-v1',
+    loadComponent: () =>
+      import('./pages/stepper-v1/stepper-v1.component').then(
+        (m) => m.StepperV1Page
+      ),
+  },
 ];

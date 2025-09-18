@@ -4,6 +4,7 @@ import {
   input,
   signal,
   TemplateRef,
+  viewChild,
 } from '@angular/core';
 import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
 import { TabInfo } from '../model/tab-info.interface';
@@ -22,22 +23,29 @@ export class Tab2Component {
   tempHashMap = new Map();
 
   currentTemplate = signal<TemplateRef<any> | null>(null);
+  currentTab = signal<string>('');
+  defaultTemp = viewChild<TemplateRef<any> | undefined>('defaultTemp');
 
   ngAfterContentInit() {
     this.tabsContent().forEach((i) => {
-      this.tempHashMap.set(i.templateMetaData, i.template);
+      this.tempHashMap.set(i.templateMetaData(), i.template);
     });
 
     const initial = this.activeTab();
     if (initial && this.tempHashMap.has(initial)) {
+      this.currentTab.set(initial);
       this.currentTemplate.set(this.tempHashMap.get(initial)!);
     }
   }
 
   onClickTab(tabKey: string) {
+    this.currentTab.set(tabKey);
+
     const template = this.tempHashMap.get(tabKey);
     if (template) {
       this.currentTemplate.set(template);
+    } else {
+      this.currentTemplate.set(this.defaultTemp()!);
     }
   }
 }

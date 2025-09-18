@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
     @for (tab of tabMetaData(); track tab) {
     <li class="nav-item">
-        <a class="nav-link" [class.active]="tab.key === tempHashMap.get(tab.key)" (click)="onClickTab(tab.key)">
+        <a class="nav-link" [class.active]="tab.key === currentTab()" (click)="onClickTab(tab.key)">
             {{ tab.heading }}
         </a>
     </li>
@@ -10,3 +10,7 @@
 
 
 <ng-container *ngTemplateOutlet="currentTemplate()"></ng-container>
+
+<ng-template #defaultTemp>
+    <p>No content..</p>
+</ng-template>
