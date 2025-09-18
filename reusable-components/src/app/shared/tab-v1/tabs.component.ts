@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   contentChildren,
   input,
@@ -10,10 +11,11 @@ import {
 import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
 
 @Component({
-  selector: 'app-tabs',
+  selector: 'dm-tabs',
   imports: [NgTemplateOutlet],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsComponent {
   tabs = contentChildren(TemplateMetaDataDirective);

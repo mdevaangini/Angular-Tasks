@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, model } from '@angular/core';
 import { TableV1Component } from '../../../../shared/table-v1/table.component';
 import { TableMetaData } from '../../../../shared/model/table-metaData.interface';
 
@@ -7,6 +7,7 @@ import { TableMetaData } from '../../../../shared/model/table-metaData.interface
   imports: [TableV1Component],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableV1Page {
   tableMetaData: TableMetaData[] = [

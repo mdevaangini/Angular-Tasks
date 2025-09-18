@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   contentChild,
   contentChildren,
@@ -13,6 +14,7 @@ import {
   imports: [NgTemplateOutlet],
   templateUrl: './table-column.component.html',
   styleUrl: './table-column.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableColumnComponent {
   columnTemplate = contentChildren(TemplateRef<any>);

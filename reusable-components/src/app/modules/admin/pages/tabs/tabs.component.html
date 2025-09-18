@@ -1,8 +1,19 @@
-<app-tabs [activeTab]="activeTab()">
+<dm-tabs [activeTab]="activeTab()">
     <ng-template templateMetaData='Tab 1'>
         <app-form />
     </ng-template>
     <ng-template templateMetaData='Tab 2'>
         <p>Hello from template 2</p>
     </ng-template>
-</app-tabs>
+</dm-tabs>
+
+
+<!-- 
+Problem with this approach-> we have to pass other info regarding template not just heading , so make metadata and pass
+to tabs
+
+tab should always have a key to identify 
+
+tabs can be lets say 3 but not necessary that content will be the same, here ng-template is just for content
+
+-->

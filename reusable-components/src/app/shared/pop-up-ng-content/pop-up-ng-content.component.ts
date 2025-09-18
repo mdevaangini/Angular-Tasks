@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   ElementRef,
@@ -10,10 +11,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-pop-up-ng-content',
+  selector: 'dm-pop-up-ng-content',
   imports: [],
   templateUrl: './pop-up-ng-content.component.html',
   styleUrl: './pop-up-ng-content.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopUpNgContentComponent {
   /**

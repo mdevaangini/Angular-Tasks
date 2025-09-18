@@ -1,4 +1,11 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { TableMetaData } from '../../../../shared/model/table-metaData.interface';
 import { PaginationV2Component } from '../../../../shared/pagination-v2/pagination-v2.component';
 import { TableDataService } from './service/table-data.service';
@@ -9,6 +16,7 @@ import { TableV2Component } from '../../../../shared/table-v2/table-v2.component
   imports: [PaginationV2Component, TableV2Component],
   templateUrl: './table-with-pagination.component.html',
   styleUrl: './table-with-pagination.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TableDataService],
 })
 export class TableWithPaginationPage {

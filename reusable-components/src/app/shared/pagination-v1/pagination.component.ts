@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -8,10 +9,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-pagination',
+  selector: 'dm-pagination',
   imports: [],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {
   totalRecords = input.required<number>();

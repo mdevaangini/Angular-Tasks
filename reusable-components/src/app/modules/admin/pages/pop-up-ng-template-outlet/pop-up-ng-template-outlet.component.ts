@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   input,
@@ -15,6 +16,7 @@ import { PopUpNgTemplateOutletComponent } from '../../../../shared/pop-up-ng-tem
   imports: [ReactiveFormsModule, PopUpNgTemplateOutletComponent],
   templateUrl: './pop-up-ng-template-outlet.component.html',
   styleUrl: './pop-up-ng-template-outlet.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopUpNgTemplateOutletPage {
   loginForm = new FormGroup({

@@ -1,5 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   input,
@@ -9,10 +10,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-pop-up-ng-template-outlet',
+  selector: 'dm-pop-up-ng-template-outlet',
   imports: [NgTemplateOutlet],
   templateUrl: './pop-up-ng-template-outlet.component.html',
   styleUrl: './pop-up-ng-template-outlet.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopUpNgTemplateOutletComponent {
   /**

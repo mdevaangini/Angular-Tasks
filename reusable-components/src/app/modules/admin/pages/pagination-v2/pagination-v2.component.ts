@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PaginationV2Component } from '../../../../shared/pagination-v2/pagination-v2.component';
 
 @Component({
@@ -6,6 +6,7 @@ import { PaginationV2Component } from '../../../../shared/pagination-v2/paginati
   imports: [PaginationV2Component],
   templateUrl: './pagination-v2.component.html',
   styleUrl: './pagination-v2.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationV2Page {
   recordsPerPage: number[] = [10, 20, 25];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PaginationComponent } from '../../../../shared/pagination-v1/pagination.component';
 
 @Component({
@@ -6,5 +6,6 @@ import { PaginationComponent } from '../../../../shared/pagination-v1/pagination
   imports: [PaginationComponent],
   templateUrl: './pagination-v1.component.html',
   styleUrl: './pagination-v1.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationV1Page {}

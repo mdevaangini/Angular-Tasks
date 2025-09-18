@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -10,10 +11,11 @@ import {
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-pagination-v2',
+  selector: 'dm-pagination-v2',
   imports: [FormsModule],
   templateUrl: './pagination-v2.component.html',
   styleUrl: './pagination-v2.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationV2Component {
   totalRecords = input.required<number>();

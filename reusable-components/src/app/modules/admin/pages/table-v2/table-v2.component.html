@@ -1,8 +1,8 @@
-<app-table-v2 [metaData]="tableMetaData" [data]="tableData" [(sort)]="sort" [tableMargin]="'50px'">
+<dm-table-v2 [metaData]="tableMetaData" [data]="tableData" [(sort)]="sort" [tableMargin]="'50px'">
     <ng-template templateMetaData="serialNumber" let-rowData="rowData">
         {{ rowData.serialNumber % 2 === 0 ? 'Even' : 'Odd' }}
     </ng-template>
     <ng-template templateMetaData="firstName" let-rowData="rowData">
         {{ rowData.firstName === 'Devaangini' ? 'Good' : 'Bad' }}
     </ng-template>
-</app-table-v2>
+</dm-table-v2>

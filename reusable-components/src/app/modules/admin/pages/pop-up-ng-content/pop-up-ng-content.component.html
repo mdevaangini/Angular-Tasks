@@ -1,5 +1,5 @@
 <h2>Create an account</h2>
-<app-pop-up-ng-content [id]="'user-content'" (close)="closeBtn($event)">
+<dm-pop-up-ng-content [id]="'user-content'" (close)="closeBtn($event)">
     <ng-container ngProjectAs="[slot='launchbtn']">
         Create User
     </ng-container>
@@ -19,4 +19,4 @@
     <ng-container ngProjectAs="[slot='footer']">
         <button type="button" class="btn btn-primary" (click)="create(form)">Create</button>
     </ng-container>
-</app-pop-up-ng-content>
+</dm-pop-up-ng-content>

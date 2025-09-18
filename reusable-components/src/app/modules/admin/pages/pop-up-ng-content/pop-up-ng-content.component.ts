@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   ElementRef,
@@ -16,6 +17,7 @@ import { PopUpNgContentComponent } from '../../../../shared/pop-up-ng-content/po
   imports: [FormsModule, PopUpNgContentComponent],
   templateUrl: './pop-up-ng-content.component.html',
   styleUrl: './pop-up-ng-content.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopUpNgContentPage {
   username: string = '';

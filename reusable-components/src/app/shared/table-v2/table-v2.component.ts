@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   contentChildren,
@@ -14,10 +15,11 @@ import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common';
 import { TableColumnComponent } from '../../modules/admin/pages/table-v2/components/table-column/table-column.component';
 
 @Component({
-  selector: 'app-table-v2',
+  selector: 'dm-table-v2',
   imports: [NgTemplateOutlet],
   templateUrl: './table-v2.component.html',
   styleUrl: './table-v2.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableV2Component {
   metaData = input.required<TableMetaData[]>();
