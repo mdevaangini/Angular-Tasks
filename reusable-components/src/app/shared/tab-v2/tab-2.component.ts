@@ -38,7 +38,7 @@ export class Tab2Component {
     }
   }
 
-  onClickTab(tabKey: string) {
+  onTabClick(tabKey: string) {
     this.currentTab.set(tabKey);
 
     const template = this.tempHashMap.get(tabKey);

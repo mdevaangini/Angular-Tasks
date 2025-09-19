@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
     @for (tab of tabMetaData(); track tab) {
     <li class="nav-item">
-        <a class="nav-link" [class.active]="tab.key === currentTab()" (click)="onClickTab(tab.key)">
+        <a class="nav-link" [class.active]="tab.key === currentTab()" (click)="onTabClick(tab.key)">
             {{ tab.heading }}
         </a>
     </li>
