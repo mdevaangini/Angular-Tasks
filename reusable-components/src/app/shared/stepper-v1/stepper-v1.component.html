@@ -20,7 +20,7 @@
 <div class="step-controls">
     <button (click)="prev()" [disabled]="currentStep() === stepperMetaData()[0].key">Previous</button>
     <button (click)="next()"
-        [disabled]="currentStep() === stepperMetaData()[stepperMetaData().length - 1].key">Next</button>
+        [disabled]="!validateStepContent || currentStep() === stepperMetaData()[stepperMetaData().length - 1].key">Next</button>
 </div>
 
 </div>

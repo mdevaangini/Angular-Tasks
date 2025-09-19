@@ -22,91 +22,83 @@ export class StepperV1Component {
   activeStep = input<string>();
 
   currentStep = signal<string | undefined>('');
-  currentStepRecord = signal<any>({});
   stepHashmap = new Map();
   stepTemplate = signal<TemplateRef<any> | null>(null);
 
+  //to get the current step object from stepperMetaData to use serial number afterwards
+  get getCurrentStep() {
+    const currentStep = this.stepperMetaData().find(
+      (step) => step.key === this.currentStep()
+    );
+    return currentStep!;
+  }
+
+  //Validation Logic
+  get validateStepContent() {
+    return this.getCurrentStep?.handler?.();
+  }
+
+  markDataAsVisited(currentStep: any) {
+    const modifiedData = this.stepperMetaData().map((step) =>
+      currentStep.serialNumber > step.serialNumber
+        ? { ...step, visited: true }
+        : { ...step, visited: false }
+    );
+    return this.stepperMetaData.set(modifiedData);
+  }
+
   ngAfterContentInit() {
+    //hashmap to render templates
     this.stepsContent().forEach((step) => {
       this.stepHashmap.set(step.templateMetaData(), step.template);
     });
 
     if (this.activeStep() && this.stepHashmap.has(this.activeStep())) {
       this.currentStep.set(this.activeStep());
-      const currentStep = this.getCurrentStep;
-      if (currentStep?.serialNumber) {
-        this.visitedMetaDataList(currentStep);
-      }
       this.stepTemplate.set(this.stepHashmap.get(this.activeStep()));
+    }
+
+    if (this.getCurrentStep?.serialNumber) {
+      this.markDataAsVisited(this.getCurrentStep);
     }
   }
 
   onClick(step: any) {
+    if (!this.validateStepContent) {
+      return;
+    }
+
     const temp = this.stepHashmap.get(step.key);
     this.stepTemplate.set(temp);
     this.currentStep.set(step.key);
 
-    this.currentStepRecord.set(this.getCurrentStep);
-    if (this.currentStepRecord()?.serialNumber) {
-      this.visitedMetaDataList(this.currentStepRecord());
+    if (this.getCurrentStep?.serialNumber) {
+      this.markDataAsVisited(this.getCurrentStep);
     }
   }
 
   prev() {
-    this.currentStepRecord.set(this.getCurrentStep);
-
-    if (this.currentStepRecord()) {
-      const prevStep = this.stepperMetaData().find(
-        (step) =>
-          step.serialNumber === this.currentStepRecord().serialNumber - 1
-      );
-      this.currentStep.set(prevStep?.key);
-      this.stepTemplate.set(this.stepHashmap.get(prevStep?.key));
-      if (prevStep?.serialNumber) {
-        this.visitedMetaDataList(prevStep);
-      }
+    const prevStep = this.stepperMetaData().find(
+      (step) => step.serialNumber === this.getCurrentStep?.serialNumber - 1
+    );
+    this.currentStep.set(prevStep?.key);
+    this.stepTemplate.set(this.stepHashmap.get(prevStep?.key));
+    if (prevStep?.serialNumber) {
+      this.markDataAsVisited(prevStep);
     }
   }
 
   next() {
-    this.currentStepRecord.set(this.getCurrentStep);
-
-    if (this.currentStepRecord()) {
-      //Validation Logic
-      if (this.currentStepRecord().handler) {
-        const canProceed = this.currentStepRecord().handler();
-
-        if (!canProceed) {
-          console.log('Validation failed');
-          return;
-        }
-      }
-
-      const nextStep = this.stepperMetaData().find(
-        (step) =>
-          step.serialNumber === this.currentStepRecord().serialNumber + 1
-      );
-      this.currentStep.set(nextStep?.key);
-      this.stepTemplate.set(this.stepHashmap.get(nextStep?.key));
-      if (nextStep?.serialNumber) {
-        this.visitedMetaDataList(nextStep);
-      }
+    if (!this.validateStepContent) {
+      return;
     }
-  }
-
-  get getCurrentStep() {
-    const currentStep = this.stepperMetaData().find(
-      (step) => step.key === this.currentStep()
+    const nextStep = this.stepperMetaData().find(
+      (step) => step.serialNumber === this.getCurrentStep.serialNumber + 1
     );
-    return currentStep;
-  }
-
-  visitedMetaDataList(visited: any) {
-    const visitedStep = this.stepperMetaData().map((step) =>
-      visited.serialNumber > step.serialNumber
-        ? { ...step, visited: true }
-        : { ...step, visited: false }
-    );
-    return this.stepperMetaData.set(visitedStep);
+    this.currentStep.set(nextStep?.key);
+    this.stepTemplate.set(this.stepHashmap.get(nextStep?.key));
+    if (nextStep?.serialNumber) {
+      this.markDataAsVisited(nextStep);
+    }
   }
 }

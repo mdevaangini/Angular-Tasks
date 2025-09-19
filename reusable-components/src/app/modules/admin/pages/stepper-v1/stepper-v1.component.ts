@@ -31,9 +31,9 @@ export class StepperV1Page {
   activeStep = signal<string>('step2');
 
   handlerNextStep1() {
-    return false;
+    return true;
   }
   handlerNextStep2() {
-    return true;
+    return false;
   }
 }
