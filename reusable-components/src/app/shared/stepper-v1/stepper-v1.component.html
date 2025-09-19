@@ -5,8 +5,10 @@
             <div class="circle">{{ i + 1 }}</div>
             <div class="label" (click)="onClick(step)">{{ step.heading }}</div>
 
-            @if(i < stepperMetaData().length - 1) { <div class="line">
-        </div> }
+            @if(i < stepperMetaData().length - 1) { <div class="line" [class.active]="step.visited">
+        </div>
+        }
+
     </div>
     }
 </div>

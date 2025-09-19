@@ -55,6 +55,10 @@
     margin-left: 16px;
     margin-right: 16px;
   }
+
+  .line.active {
+    background: #2563eb;
+  }
 }
 
 .stepper-content {
@@ -77,5 +81,4 @@
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  transition: background 0.3s ease;
 }
