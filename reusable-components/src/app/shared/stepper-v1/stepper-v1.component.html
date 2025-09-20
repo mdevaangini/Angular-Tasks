@@ -1,7 +1,7 @@
 <div class="stepper-container">
     <div class="stepper">
         @for (step of stepperMetaData(); track step.serialNumber; let i = $index) {
-        <div class="step" [class.active]="step.key === currentStep()">
+        <div class="step" [class.active]="step.visited || step.key === currentStep()">
             <div class="circle">{{ i + 1 }}</div>
             <div class="label" (click)="onClick(step)">{{ step.heading }}</div>
 
@@ -18,9 +18,14 @@
 </div>
 
 <div class="step-controls">
-    <button (click)="prev()" [disabled]="currentStep() === stepperMetaData()[0].key">Previous</button>
+    <button (click)="prev()"
+        [style.visibility]="currentStep() === stepperMetaData()[0].key ? 'hidden' : 'visible'">Previous</button>
     <button (click)="next()"
-        [disabled]="!validateStepContent || currentStep() === stepperMetaData()[stepperMetaData().length - 1].key">Next</button>
+        [style.visibility]="!validateStepContent || currentStep() === stepperMetaData()[stepperMetaData().length - 1].key ? 'hidden' : 'visible'">Next</button>
 </div>
 
 </div>
+
+<!-- 
+[hidden] not used because this uses display: none internally → layout will shift.
+visibility -> button space is kept intact-->

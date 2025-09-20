@@ -1,13 +1,16 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { StepperInfo } from '../../../../shared/model/stepper-info.interface';
 import { StepperV1Component } from '../../../../shared/stepper-v1/stepper-v1.component';
 import { TemplateMetaDataDirective } from '../../../../shared/directives/template-meta-data.directive';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf } from '../../../../../../node_modules/@angular/common/common_module.d-NEF7UaHr';
 
 @Component({
   selector: 'app-stepper-v1-page',
-  imports: [StepperV1Component, TemplateMetaDataDirective],
+  imports: [StepperV1Component, TemplateMetaDataDirective, ReactiveFormsModule],
   templateUrl: './stepper-v1.component.html',
   styleUrl: './stepper-v1.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperV1Page {
   stepperMetaData = signal<StepperInfo[]>([
@@ -28,12 +31,15 @@ export class StepperV1Page {
     { serialNumber: 3, heading: 'Header III', key: 'step3', visited: false },
   ]);
 
-  activeStep = signal<string>('step2');
+  activeStep = signal<string>('step1');
+
+  email = new FormControl('', Validators.required);
 
   handlerNextStep1() {
-    return true;
+    return this.email.valid;
   }
+
   handlerNextStep2() {
-    return false;
+    return true;
   }
 }

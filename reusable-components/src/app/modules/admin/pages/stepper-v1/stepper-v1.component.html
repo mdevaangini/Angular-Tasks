@@ -1,6 +1,14 @@
 <dm-stepper-v1 [(stepperMetaData)]="stepperMetaData" [activeStep]="activeStep()">
     <ng-template templateMetaData="step1">
-        <p>Step 1</p>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+                [formControl]="email">
+            @if(email.hasError('required') && email.dirty)
+            {
+            <span>email is required</span>
+            }
+        </div>
     </ng-template>
     <ng-template templateMetaData="step2">
         Step 2
