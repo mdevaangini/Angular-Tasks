@@ -19,3 +19,55 @@
         <button type="button" class="btn btn-primary" (click)="save();close()">Log In</button>
     </ng-template>
 </dm-pop-up-ng-template-outlet>
+
+<dm-manual-popup [id]="'user-template'" (close)="closeBtn($event)" [launchBtn]="userLaunchBtn"
+    [modalHeader]="userModalHeader" [modalBody]="userModalBody" [modalFooter]="userModalFooter">
+
+    <ng-template #userLaunchBtn>
+        User Login
+    </ng-template>
+
+    <ng-template #userModalHeader>
+        Login User Info
+    </ng-template>
+
+    <ng-template #userModalBody>
+        <form [formGroup]="loginForm">
+            <input class="form-control mb-3" type="text" placeholder="Enter username" formControlName="loginUsername" />
+            <input class="form-control mb-3" type="password" placeholder="Enter password"
+                formControlName="loginPassword" />
+        </form>
+    </ng-template>
+
+    <ng-template #userModalFooter let-close="close">
+        <button type="button" (click)="save(); close()">Log In</button>
+    </ng-template>
+</dm-manual-popup>
+
+
+<br><br>
+
+
+<dm-manual-popup [id]="'user2-template'" (close)="closeBtn($event)" [launchBtn]="user2LaunchBtn"
+    [modalHeader]="user2ModalHeader" [modalBody]="user2ModalBody" [modalFooter]="user2ModalFooter">
+
+    <ng-template #user2LaunchBtn>
+        User Login 2
+    </ng-template>
+
+    <ng-template #user2ModalHeader>
+        Login User Info 2
+    </ng-template>
+
+    <ng-template #user2ModalBody>
+        <form [formGroup]="loginForm">
+            <input class="form-control mb-3" type="text" placeholder="Enter username" formControlName="loginUsername" />
+            <input class="form-control mb-3" type="password" placeholder="Enter password"
+                formControlName="loginPassword" />
+        </form>
+    </ng-template>
+
+    <ng-template #user2ModalFooter let-close="close">
+        <button type="button" (click)="save(); close()">Log In</button>
+    </ng-template>
+</dm-manual-popup>

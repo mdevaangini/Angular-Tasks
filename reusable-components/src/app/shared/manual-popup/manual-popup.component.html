@@ -1,0 +1,27 @@
+<button type="button" (click)="openModal()" [id]="id()">
+    <ng-container *ngTemplateOutlet="launchBtn() ?? defaultBtn"></ng-container>
+    <ng-template #defaultBtn>Default Button</ng-template>
+</button>
+
+@if (isOpen()) {
+<div class="modal-backdrop"></div>
+}
+
+@if (isOpen()) {
+<div class="modal" [id]="id()">
+    <header>
+        <ng-container *ngTemplateOutlet="modalHeader() ?? defaultHeader"></ng-container>
+        <ng-template #defaultHeader>Default Header</ng-template>
+    </header>
+
+    <section>
+        <ng-container *ngTemplateOutlet="modalBody() ?? defaultBody"></ng-container>
+        <ng-template #defaultBody>Default Body</ng-template>
+    </section>
+
+    <footer>
+        <button type="button" (click)="closeModal(id())">Close</button>
+        <ng-container *ngTemplateOutlet="modalFooter(); context:{ close: closeModal.bind(this) }"></ng-container>
+    </footer>
+</div>
+}

@@ -10,10 +10,15 @@ import {
 } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PopUpNgTemplateOutletComponent } from '../../../../shared/pop-up-ng-template-outlet/pop-up-ng-template-outlet.component';
+import { ManualPopupComponent } from '../../../../shared/manual-popup/manual-popup.component';
 
 @Component({
   selector: 'app-pop-up-ng-template-outlet-page',
-  imports: [ReactiveFormsModule, PopUpNgTemplateOutletComponent],
+  imports: [
+    ReactiveFormsModule,
+    PopUpNgTemplateOutletComponent,
+    ManualPopupComponent,
+  ],
   templateUrl: './pop-up-ng-template-outlet.component.html',
   styleUrl: './pop-up-ng-template-outlet.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
