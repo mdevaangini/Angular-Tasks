@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
 }
 
 .outer {
@@ -61,10 +60,15 @@ button > i {
 }
 
 .connector {
-  margin: 5px 0;
   font-weight: bold;
   color: #444;
   text-align: center;
+}
+
+.connect {
+  height: 18px;
+  width: 2px;
+  background-color: #444;
 }
 
 input,
@@ -78,10 +82,12 @@ button {
   color: darkgreen;
   border: 2px solid darkgreen;
   border-radius: 15px;
+  margin-top: 8px;
 }
 .add-inner {
   padding: 8px;
   background-color: rgb(237, 146, 176);
   border-radius: 15px;
+  margin-top: 8px;
   border: 2px solid darkmagenta;
 }
