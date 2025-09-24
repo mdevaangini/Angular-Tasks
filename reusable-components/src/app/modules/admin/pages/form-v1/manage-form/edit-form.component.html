@@ -1,0 +1,29 @@
+@if(mode() === 'add')
+{
+<button type="button" (click)="add()">Add</button>
+
+}
+@else {
+<button type="button" (click)="edit()">Edit</button>
+
+}
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    @for(item of formArray();track item.id){
+    <div class="form">
+        <input type="text" [formControlName]="'firstName_' + item.id" placeholder="First Name">
+        <input type="text" [formControlName]="'lastName_' + item.id" placeholder="Last Name">
+        <input type="number" [formControlName]="'age_' + item.id" placeholder="Age">
+        <button type="button" (click)="remove(item.id)">X</button>
+    </div>
+    }
+    <button type="submit">Submit</button>
+</form>
+
+
+<hr>
+
+@if(result().length>0)
+{
+<pre>{{result() | json}}</pre>
+}

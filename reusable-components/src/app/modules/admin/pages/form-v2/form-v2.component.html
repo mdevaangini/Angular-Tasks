@@ -1,34 +1,37 @@
 <form [formGroup]="mainForm" class="form">
-    <div formArrayName="formArray">
-        <button type="button" (click)="addOuter()">Add Outer</button>
+    <div formArrayName="outer" class="outer-form">
 
-        @for (outer of formArray.controls; track $index; let i = $index; let last = $last) {
-        <div class="outer-wrapper">
-            <div [formGroupName]="i" class="outer">
-                <button type="button" class="remove-outer" (click)="removeOuter(i)">X</button>
+        @for (outerGrp of outer.controls; track outerGrp; let i = $index; let last = $last) {
+        <div [formGroupName]="i" class="outer">
+            <button type="button" class="remove-outer" (click)="removeOuter(i)">
+                <i class="bi bi-x"></i>
+            </button>
 
-                <div formArrayName="grp">
-                    <button type="button" (click)="addInner(i)">Add Inner</button>
+            <div formArrayName="inner" class="inner-form">
 
-                    @for (inner of getInnerArray(i).controls; track $index; let j = $index; let last = $last) {
-                    <div class="inner-wrapper">
-                        <div [formGroupName]="j" class="inner">
-                            <input type="text" formControlName="name" />
-                            <button type="button" (click)="removeInner(i, j)">X</button>
-                        </div>
-
-                        @if (!last) {
-                        <div class="connector">OR</div>
-                        }
-                    </div>
-                    }
+                @for (innerGrp of getInnerArray(i).controls; track innerGrp; let j = $index; let last = $last) {
+                <div [formGroupName]="j" class="inner">
+                    <input type="text" formControlName="name" />
+                    <button type="button" class="remove-inner" (click)="removeInner(i, j)">
+                        <i class="bi bi-x"></i>
+                    </button>
                 </div>
-            </div>
 
-            @if (!last) {
-            <div class="connector">AND</div>
-            }
+                @if (!last) {
+                <div class="connector">OR</div>
+                }
+                }
+                <button type="button" class="add-inner" (click)="addInner(i)">Add Inner</button>
+
+            </div>
         </div>
+
+        @if (!last) {
+        <div class="connector">AND</div>
         }
+
+        }
+        <button type="button" class="add-outer" (click)="addOuter()">Add Outer</button>
+
     </div>
 </form>

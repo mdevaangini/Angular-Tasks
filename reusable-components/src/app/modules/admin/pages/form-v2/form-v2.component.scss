@@ -1,46 +1,87 @@
 .form {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
-.outer {
-  width: 400px;
-  border: 1px solid black;
-}
-
-.outer-wrapper {
+.outer-form,
+.inner-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 16px 0;
-  position: relative;
+  gap: 10px;
 }
 
 .outer {
   border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
+  background-color: rgb(154, 183, 110);
+  border-radius: 25px;
+  padding: 30px;
   width: 300px;
   position: relative;
+  border: 2px solid darkgreen;
+}
+
+.inner {
+  display: flex;
+  border: 1px solid #ccc;
+  background-color: rgb(237, 146, 176);
+  border: 2px solid darkmagenta;
+  border-radius: 25px;
+  padding: 20px;
+  width: 200px;
+  position: relative;
+}
+
+.remove-inner {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 2px solid darkmagenta;
 }
 
 .remove-outer {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 12px;
   cursor: pointer;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 2px solid darkgreen;
 }
 
-.inner-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
+button > i {
+  position: absolute;
+  bottom: -5px;
 }
 
 .connector {
-  margin: 8px 0;
+  margin: 5px 0;
   font-weight: bold;
   color: #444;
   text-align: center;
+}
+
+input,
+button {
+  all: unset;
+}
+
+.add-outer {
+  padding: 8px;
+  background-color: rgb(154, 183, 110);
+  color: darkgreen;
+  border: 2px solid darkgreen;
+  border-radius: 15px;
+}
+.add-inner {
+  padding: 8px;
+  background-color: rgb(237, 146, 176);
+  border-radius: 15px;
+  border: 2px solid darkmagenta;
 }

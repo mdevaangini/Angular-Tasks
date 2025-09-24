@@ -69,9 +69,11 @@ export const ADMIN_ROUTES: Route[] = [
       import('./pages/form-v1/form-v1.component').then((m) => m.FormV1Page),
     children: [
       {
-        path: 'edit-form',
-        loadChildren: () =>
-          import('./pages/form-v1/form-v1.routes').then((m) => m.FORM_ROUTES),
+        path: ':mode',
+        loadComponent: () =>
+          import('./pages/form-v1/manage-form/edit-form.component').then(
+            (m) => m.ManageFormPage
+          ),
       },
     ],
   },
