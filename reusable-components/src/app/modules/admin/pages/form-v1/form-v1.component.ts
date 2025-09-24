@@ -1,26 +1,15 @@
 import { JsonPipe } from '@angular/common';
-import { Component, signal } from '@angular/core';
-import {
-  FormArray,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
-
-enum TaskInfo {
-  firstName = 'firstName',
-  lastName = 'lastName',
-  age = 'age',
-}
+import { Component, inject, signal } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-form-v1',
   imports: [RouterOutlet, ReactiveFormsModule, JsonPipe],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: './form-v1.component.html',
+  styleUrl: './form-v1.component.scss',
 })
-export class AppComponent {
+export class FormV1Page {
   formGroup = new FormGroup({
     // firstName: new FormControl(''),
     // lastName: new FormControl(''),
@@ -29,6 +18,7 @@ export class AppComponent {
 
   formArray = signal<any[]>([]);
   result = signal<any[]>([]);
+  router = inject(Router);
   ngOnInit() {}
 
   add() {
@@ -68,8 +58,17 @@ export class AppComponent {
   }
 
   edit() {
+    this.router.navigate(['/edit']);
     this.result().forEach((item: any) => {
       this.setFormControls(item.id, item);
     });
+  }
+
+  remove(id: any) {
+    this.formArray.set(
+      this.formArray().filter((item) => {
+        return item.id !== id;
+      })
+    );
   }
 }

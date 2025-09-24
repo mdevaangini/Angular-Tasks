@@ -63,4 +63,21 @@ export const ADMIN_ROUTES: Route[] = [
         (m) => m.StepperV1Page
       ),
   },
+  {
+    path: 'form-v1',
+    loadComponent: () =>
+      import('./pages/form-v1/form-v1.component').then((m) => m.FormV1Page),
+    children: [
+      {
+        path: 'edit-form',
+        loadChildren: () =>
+          import('./pages/form-v1/form-v1.routes').then((m) => m.FORM_ROUTES),
+      },
+    ],
+  },
+  {
+    path: 'form-v2',
+    loadComponent: () =>
+      import('./pages/form-v2/form-v2.component').then((m) => m.FormV2Page),
+  },
 ];
