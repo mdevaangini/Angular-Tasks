@@ -6,6 +6,7 @@ import {
   FormArray,
   ReactiveFormsModule,
   FormControl,
+  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -33,7 +34,7 @@ export class FormV2Page {
 
   createInner() {
     return new FormGroup({
-      name: new FormControl(''),
+      name: new FormControl('', Validators.required),
     });
   }
 
@@ -60,4 +61,6 @@ export class FormV2Page {
   removeInner(outerIndex: number, innerIndex: number) {
     this.getInnerArray(outerIndex).removeAt(innerIndex);
   }
+
+  onSubmit() {}
 }
