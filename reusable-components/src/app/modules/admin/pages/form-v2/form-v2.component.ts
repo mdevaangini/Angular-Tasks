@@ -23,6 +23,8 @@ export class FormV2Page {
   ngOnInit() {
     this.mainForm = new FormGroup({
       outer: new FormArray([]),
+      grpOperator: new FormControl('and'),
+      innerOperator: new FormControl('or'),
     });
   }
 
@@ -35,6 +37,8 @@ export class FormV2Page {
   createInner() {
     return new FormGroup({
       name: new FormControl('', Validators.required),
+      age: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
     });
   }
 

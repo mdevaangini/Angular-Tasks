@@ -12,15 +12,12 @@
                 @for (innerGrp of getInnerArray(i).controls; track innerGrp; let j = $index; let last = $last) {
                 <div [formGroupName]="j" class="inner">
                     <input type="text" formControlName="name" />
+                    <input type="text" formControlName="age" />
+                    <input type="text" formControlName="gender" />
                     <button type="button" class="remove-inner" (click)="removeInner(i, j)">
                         <i class="bi bi-x"></i>
                     </button>
                 </div>
-                @if(innerGrp.get('name')?.hasError('required') && innerGrp.get('name')?.dirty)
-                {
-                <span>Name is Required</span>
-
-                }
 
                 @if (!last) {
                 <div class="connect"></div>
@@ -46,5 +43,5 @@
 
     </div>
 
-    <button type="submit" class="add-outer" [hidden]="!mainForm.valid">Submit</button>
+    <button type="submit" class="add-outer" [disabled]="!mainForm.valid">Submit</button>
 </form>

@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
+  width: 700px;
+  margin: auto;
 }
+
 .outer-form,
 .inner-form {
   display: flex;
@@ -11,86 +15,81 @@
 }
 
 .outer {
-  border: 1px solid #ccc;
-  background-color: rgb(154, 183, 110);
-  border-radius: 25px;
-  padding: 30px;
-  width: 300px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 20px;
   position: relative;
-  border: 2px solid darkgreen;
+  background-color: #f9fafb;
 }
 
 .inner {
   display: flex;
-  border: 1px solid #ccc;
-  background-color: rgb(237, 146, 176);
-  border: 2px solid darkmagenta;
-  border-radius: 25px;
-  padding: 20px;
-  width: 200px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 16px;
   position: relative;
+  background-color: #f3f4f6;
 }
 
-.remove-inner {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  border: 2px solid darkmagenta;
-}
-
+.remove-inner,
 .remove-outer {
   position: absolute;
-  top: 8px;
-  right: 12px;
+  top: -10px;
+  right: -10px;
   cursor: pointer;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   border-radius: 50%;
-  border: 2px solid darkgreen;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-button > i {
-  position: absolute;
-  bottom: -5px;
+.add-outer,
+.add-inner {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
-.inner + span {
-  color: rgb(198, 6, 6);
+.add-outer {
+  background-color: #2563eb;
+}
+
+.add-inner {
+  background-color: #059669;
+}
+
+input {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.ng-invalid.ng-touched input {
+  border-color: #ef4444;
+}
+.ng-valid.ng-touched input {
+  border-color: #10b981;
 }
 
 .connector {
   font-weight: bold;
-  color: #444;
+  color: #7e7c7c;
   text-align: center;
 }
 
 .connect {
   height: 18px;
   width: 2px;
-  background-color: #444;
-}
-
-input,
-button {
-  all: unset;
-}
-
-.add-outer {
-  padding: 8px;
-  background-color: rgb(154, 183, 110);
-  color: darkgreen;
-  border: 2px solid darkgreen;
-  border-radius: 15px;
-  margin-top: 8px;
-}
-.add-inner {
-  padding: 8px;
-  background-color: rgb(237, 146, 176);
-  border-radius: 15px;
-  margin-top: 8px;
-  border: 2px solid darkmagenta;
+  background-color: #7e7c7c;
 }
