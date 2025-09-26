@@ -3,7 +3,8 @@
 <button type="button" (click)="add()">Add</button>
 
 }
-@else {
+
+@if(mode() === 'edit') {
 <button type="button" (click)="edit()">Edit</button>
 
 }

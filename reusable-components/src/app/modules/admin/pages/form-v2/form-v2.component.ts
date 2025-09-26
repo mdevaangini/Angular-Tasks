@@ -37,7 +37,7 @@ export class FormV2Page {
   createInner() {
     return new FormGroup({
       name: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
+      age: new FormControl(''),
       gender: new FormControl('', Validators.required),
     });
   }
@@ -66,5 +66,7 @@ export class FormV2Page {
     this.getInnerArray(outerIndex).removeAt(innerIndex);
   }
 
-  onSubmit() {}
+  onSubmit() {
+    console.log(this.mainForm.getRawValue());
+  }
 }

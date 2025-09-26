@@ -5,13 +5,14 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-form-v1',
-  imports: [RouterOutlet, ReactiveFormsModule, JsonPipe],
+  imports: [RouterOutlet, ReactiveFormsModule],
   templateUrl: './form-v1.component.html',
   styleUrl: './form-v1.component.scss',
 })
 export class FormV1Page {
   router = inject(Router);
   route = inject(ActivatedRoute);
+  mode = signal('');
 
   edit() {
     this.router.navigate(['edit'], { relativeTo: this.route });

@@ -25,7 +25,6 @@ export class ManageFormPage {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.mode.set(params.get('mode'));
-      console.log(this.mode());
     });
   }
 

@@ -1,47 +1,49 @@
-<form [formGroup]="mainForm" class="form" (ngSubmit)="onSubmit()">
-    <div formArrayName="outer" class="outer-form">
+<div class="container">
+    <form [formGroup]="mainForm" class="form" (ngSubmit)="onSubmit()">
+        <div formArrayName="outer" class="outer-form">
 
-        @for (outerGrp of outer.controls; track outerGrp; let i = $index; let last = $last) {
-        <div [formGroupName]="i" class="outer">
-            <button type="button" class="remove-outer" (click)="removeOuter(i)">
-                <i class="bi bi-x"></i>
-            </button>
+            @for (outerGrp of outer.controls; track outerGrp; let i = $index; let last = $last) {
+            <div [formGroupName]="i" class="outer">
+                <button type="button" class="remove-outer" (click)="removeOuter(i)">
+                    <i class="bi bi-x"></i>
+                </button>
 
-            <div formArrayName="inner" class="inner-form">
+                <div formArrayName="inner" class="inner-form">
 
-                @for (innerGrp of getInnerArray(i).controls; track innerGrp; let j = $index; let last = $last) {
-                <div [formGroupName]="j" class="inner">
-                    <input type="text" formControlName="name" />
-                    <input type="text" formControlName="age" />
-                    <input type="text" formControlName="gender" />
-                    <button type="button" class="remove-inner" (click)="removeInner(i, j)">
-                        <i class="bi bi-x"></i>
-                    </button>
+                    @for (innerGrp of getInnerArray(i).controls; track innerGrp; let j = $index; let last = $last) {
+                    <div [formGroupName]="j" class="inner">
+                        <input type="text" formControlName="name" />
+                        <input type="text" formControlName="age" />
+                        <input type="text" formControlName="gender" />
+                        <button type="button" class="remove-inner" (click)="removeInner(i, j)">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+
+                    @if (!last) {
+                    <div class="connect"></div>
+                    <div class="connector">OR</div>
+                    <div class="connect"></div>
+
+                    }
+                    }
+                    <button type="button" class="add-inner" (click)="addInner(i)">Add Inner</button>
+
                 </div>
-
-                @if (!last) {
-                <div class="connect"></div>
-                <div class="connector">OR</div>
-                <div class="connect"></div>
-
-                }
-                }
-                <button type="button" class="add-inner" (click)="addInner(i)">Add Inner</button>
-
             </div>
+
+            @if (!last) {
+            <div class="connect"></div>
+            <div class="connector">AND</div>
+            <div class="connect"></div>
+
+            }
+
+            }
+            <button type="button" class="add-outer" (click)="addOuter()">Add Outer</button>
+
         </div>
 
-        @if (!last) {
-        <div class="connect"></div>
-        <div class="connector">AND</div>
-        <div class="connect"></div>
-
-        }
-
-        }
-        <button type="button" class="add-outer" (click)="addOuter()">Add Outer</button>
-
-    </div>
-
-    <button type="submit" class="add-outer" [disabled]="!mainForm.valid">Submit</button>
-</form>
+        <button type="submit" class="add-outer">Submit</button>
+    </form>
+</div>

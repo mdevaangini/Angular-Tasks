@@ -1,10 +1,13 @@
+.container {
+  width: 700px;
+  margin: auto;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  width: 700px;
-  margin: auto;
 }
 
 .outer-form,
@@ -75,11 +78,18 @@ input {
   outline: none;
 }
 
-.ng-invalid.ng-touched input {
+//classes applied to individual inputs
+input.ng-invalid.ng-touched {
   border-color: #ef4444;
 }
-.ng-valid.ng-touched input {
+
+input.ng-valid.ng-touched {
   border-color: #10b981;
+}
+
+//classes applied to form inputs are invalid and we are submitting the form
+form.ng-submitted input.ng-invalid {
+  border-color: #ef4444;
 }
 
 .connector {
