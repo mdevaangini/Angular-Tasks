@@ -1,5 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CommonModule, JsonPipe, KeyValuePipe } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -12,13 +17,15 @@ import {
 @Component({
   selector: 'app-form-v2',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, JsonPipe, KeyValuePipe],
   templateUrl: './form-v2.component.html',
   styleUrls: ['./form-v2.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormV2Page {
   mainForm = new FormGroup<any>({});
+
+  userFormGroup = input.required<FormGroup<any>>();
 
   ngOnInit() {
     this.mainForm = new FormGroup({
@@ -35,6 +42,7 @@ export class FormV2Page {
   }
 
   createInner() {
+    // return this.userFormGroup();
     return new FormGroup({
       name: new FormControl('', Validators.required),
       age: new FormControl(''),

@@ -9,3 +9,13 @@
 </dm-nav-bar>
 
 <router-outlet />
+
+
+@if(loadingService.isLoading)
+{
+<div class="spinner-border" role="status">
+</div>
+}
+@else {
+<pre>{{data() | json}}</pre>
+}
