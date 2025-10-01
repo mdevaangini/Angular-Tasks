@@ -24,8 +24,9 @@ export class AppComponent {
   data = signal('');
 
   ngOnInit() {
-    this.mockService.getJsonData().subscribe((config: any) => {
-      this.data.set(config);
+    this.mockService.getJsonData().subscribe({
+      next: (res: any) => this.data.set(res),
+      error: (err) => console.log('Components: ', err),
     });
   }
 }
