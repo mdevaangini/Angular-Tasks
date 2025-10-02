@@ -1,6 +1,7 @@
 import {
   Component,
   contentChildren,
+  inject,
   input,
   signal,
   TemplateRef,
@@ -9,6 +10,8 @@ import {
 import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
 import { TabInfo } from '../model/tab-info.interface';
 import { NgTemplateOutlet } from '@angular/common';
+import { LoadingService } from '../../core/services/loading.service';
+import { MockApiService } from '../../core/services/mock-api.service';
 
 @Component({
   selector: 'dm-tab-2',
@@ -47,5 +50,17 @@ export class Tab2Component {
     } else {
       this.currentTemplate.set(this.defaultTemp()!);
     }
+  }
+
+  mockService = inject(MockApiService);
+  loadingService = inject(LoadingService);
+
+  data = signal('');
+
+  ngOnInit() {
+    this.mockService.getAllJsonData().subscribe({
+      next: (res: any) => console.log(res),
+      error: (err) => console.log('Tab Components: ', err),
+    });
   }
 }

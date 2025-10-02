@@ -12,4 +12,7 @@ export class MockApiService {
   getJsonData() {
     return this.http.get('https://jsonplaceholder.typicode.com/todos/1');
   }
+  getAllJsonData() {
+    return this.http.get('https://jsonplaceholder.typicode.com/todos');
+  }
 }

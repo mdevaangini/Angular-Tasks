@@ -1,4 +1,7 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { Route } from '@angular/router';
+import { errorHandlingInterceptor } from '../../core/interceptors/error-handling.interceptor';
+import { canActivateGuard } from '../../core/gaurds/can-activate.guard';
 
 export const ADMIN_ROUTES: Route[] = [
   {
@@ -55,6 +58,9 @@ export const ADMIN_ROUTES: Route[] = [
     path: 'tab-v2',
     loadComponent: () =>
       import('./pages/tab-v2/tab-2.component').then((m) => m.Tab2Page),
+    providers: [
+      provideHttpClient(withInterceptors([errorHandlingInterceptor])),
+    ],
   },
   {
     path: 'stepper-v1',
@@ -62,6 +68,8 @@ export const ADMIN_ROUTES: Route[] = [
       import('./pages/stepper-v1/stepper-v1.component').then(
         (m) => m.StepperV1Page
       ),
+    canActivate: [canActivateGuard],
+    data: { access: 'YES' },
   },
   {
     path: 'form-v1',
