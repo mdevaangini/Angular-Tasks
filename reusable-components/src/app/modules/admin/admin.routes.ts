@@ -1,7 +1,7 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { Route } from '@angular/router';
 import { errorHandlingInterceptor } from '../../core/interceptors/error-handling.interceptor';
-import { canActivateGuard } from '../../core/gaurds/can-activate.guard';
+import { permissionGuard } from '../../core/gaurds/permission.guard';
 
 export const ADMIN_ROUTES: Route[] = [
   {
@@ -36,6 +36,7 @@ export const ADMIN_ROUTES: Route[] = [
     path: 'table-v1',
     loadComponent: () =>
       import('./pages/table-v1/table.component').then((m) => m.TableV1Page),
+    canActivate: [permissionGuard('table', 'v1')],
   },
   {
     path: 'table-v2',
@@ -68,8 +69,8 @@ export const ADMIN_ROUTES: Route[] = [
       import('./pages/stepper-v1/stepper-v1.component').then(
         (m) => m.StepperV1Page
       ),
-    canActivate: [canActivateGuard],
-    data: { access: 'YES' },
+    // canActivate: [permissionGuard],
+    data: { access: 'NO' },
   },
   {
     path: 'form-v1',

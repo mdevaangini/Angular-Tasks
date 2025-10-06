@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PermissionService } from '../../core/services/permission.service';
 
 @Component({
   selector: 'dm-nav-bar',
@@ -8,4 +9,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+  permissionService = inject(PermissionService);
+}

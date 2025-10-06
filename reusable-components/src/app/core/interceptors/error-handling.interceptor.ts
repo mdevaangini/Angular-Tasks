@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
-import { ERROR_MESSAGES } from '../constants/errors';
+import { ERROR_MESSAGES } from '../model/errors';
 
 export const errorHandlingInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
