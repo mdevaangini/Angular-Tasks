@@ -2,9 +2,9 @@ export type Module =
   | 'table'
   | 'stepper'
   | 'pagination'
-  | 'forms'
+  | 'form'
   | 'popup'
-  | 'tabs';
+  | 'tab';
 
 // export interface Permissions {
 //   [k: string]: PermissionFlags;

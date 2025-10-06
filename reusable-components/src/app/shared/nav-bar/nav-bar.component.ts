@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PermissionService } from '../../core/services/permission.service';
 
@@ -11,4 +16,9 @@ import { PermissionService } from '../../core/services/permission.service';
 })
 export class NavBarComponent {
   permissionService = inject(PermissionService);
+
+  onCLick() {
+    this.permissionService.permissions.table.v1 =
+      !this.permissionService.permissions.table.v1;
+  }
 }

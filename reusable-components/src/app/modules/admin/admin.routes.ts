@@ -36,7 +36,7 @@ export const ADMIN_ROUTES: Route[] = [
     path: 'table-v1',
     loadComponent: () =>
       import('./pages/table-v1/table.component').then((m) => m.TableV1Page),
-    canActivate: [permissionGuard('table', 'v1')],
+    canMatch: [permissionGuard('table', 'v1')],
   },
   {
     path: 'table-v2',

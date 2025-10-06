@@ -7,4 +7,5 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./modules/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
   },
+  // { path: '**', redirectTo: '/admin' }, or write logic in gaurds as well
 ];

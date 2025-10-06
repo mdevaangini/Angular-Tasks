@@ -1,29 +1,33 @@
 import { Injectable } from '@angular/core';
-import { loadPermission } from '../model/permission';
+import { loadPermission, Module } from '../model/permission';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PermissionService {
-  permissions: any = loadPermission();
+  permissions: any;
 
-  hasPermission(module: string, feature?: string): boolean {
+  async loadPermissionData() {
+    this.permissions = await loadPermission();
+  }
+
+  hasPermission(module: Module, feature?: string): boolean {
     const modulePermission = this.permissions[module];
     if (!modulePermission) return false;
 
-    // When module has "allowed" property
+    // When module have features
     if ('allowed' in modulePermission) {
-      if (feature && modulePermission[feature]) {
-        const featurePerm = modulePermission[feature];
-        return (
-          modulePermission.allowed === true &&
-          (featurePerm.read === true || featurePerm.write === true)
-        );
+      if (modulePermission.allowed) {
+        if (feature && modulePermission[feature]) {
+          const featurePerm = modulePermission[feature];
+          return featurePerm.read || featurePerm.write;
+        }
       }
-      return modulePermission.allowed === true;
+
+      return modulePermission.allowed;
     }
 
-    // When module directly has read/write
-    return modulePermission.read === true || modulePermission.write === true;
+    // When module does not have any feature
+    return modulePermission.read || modulePermission.write;
   }
 }
