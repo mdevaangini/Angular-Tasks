@@ -9,7 +9,7 @@ export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
   return next(reqWithHeaders).pipe(
     tap((event) => {
       if (event.type === HttpEventType.Response) {
-        console.log(`Status: ${event.status}`);
+        // console.log(`Status: ${event.status}`);
       }
     })
   );

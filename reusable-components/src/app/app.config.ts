@@ -24,10 +24,13 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([
         loggingInterceptor,
-        loadingInterceptor,
+        // loadingInterceptor, // removed so that can handle loading via httpservice
         errorHandlingInterceptor,
         retryInterceptor,
       ])
     ),
   ],
 };
+
+// When the app starts, Angular runs all AppInitializers.
+// If any of them return a Promise, it waits for it to resolve before bootstrapping the root component.

@@ -9,13 +9,13 @@ import {
 } from '@angular/core';
 import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
 import { TabInfo } from '../model/tab-info.interface';
-import { NgTemplateOutlet } from '@angular/common';
+import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { LoadingService } from '../../core/services/loading.service';
 import { MockApiService } from '../../core/services/mock-api.service';
 
 @Component({
   selector: 'dm-tab-2',
-  imports: [NgTemplateOutlet],
+  imports: [NgTemplateOutlet, JsonPipe],
   templateUrl: './tab-2.component.html',
   styleUrl: './tab-2.component.scss',
 })
@@ -58,8 +58,9 @@ export class Tab2Component {
   data = signal('');
 
   ngOnInit() {
+    console.log(this.loadingService.isLoading);
     this.mockService.getAllJsonData().subscribe({
-      next: (res: any) => console.log(res),
+      next: (res: any) => this.data.set(res),
       error: (err) => console.log('Tab Components: ', err),
     });
   }

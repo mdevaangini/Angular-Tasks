@@ -24,9 +24,16 @@ export class AppComponent {
   data = signal('');
 
   ngOnInit() {
+    console.log(this.loadingService.isLoading);
+
     this.mockService.getJsonData().subscribe({
-      next: (res: any) => this.data.set(res),
+      next: (res: any) => {
+        this.data.set(res);
+      },
       error: (err) => console.log('Components: ', err),
+      complete: () => {
+        this.loadingService.isLoading = false; //why?
+      },
     });
   }
 }
