@@ -6,20 +6,31 @@ export const errorHandlingInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       switch (error.status) {
+        case 400:
+          console.error(ERROR_MESSAGES.BAD_REQUEST);
+          break;
         case 401:
-          console.log(ERROR_MESSAGES.UNAUTHORIZED);
+          console.error(ERROR_MESSAGES.UNAUTHORIZED);
+          break;
+        case 403:
+          console.error(ERROR_MESSAGES.FORBIDDEN);
           break;
         case 404:
-          console.log(ERROR_MESSAGES.NOT_FOUND);
+          console.error(ERROR_MESSAGES.NOT_FOUND);
           break;
         case 500:
-          console.log(ERROR_MESSAGES.SERVER);
+          console.error(ERROR_MESSAGES.SERVER);
+          break;
+        case 503:
+          console.error(ERROR_MESSAGES.SERVICE_UNAVAILABLE);
           break;
         default:
-          console.log(ERROR_MESSAGES.UNKNOWN);
+          console.error(ERROR_MESSAGES.UNKNOWN);
           break;
       }
-      return throwError(() => error); //without this -> error will be swallowed inside the interceptor, by rethrowing -> we let the components .subscribe({error}) block still executes
+
+      // Important: rethrow the error so components can still handle it if needed
+      return throwError(() => error);
     })
   );
 };

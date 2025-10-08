@@ -1,3 +1,5 @@
+import { HttpContextToken } from '@angular/common/http';
+
 export type Module =
   | 'table'
   | 'stepper'
@@ -15,6 +17,8 @@ export type Module =
 //   read?: boolean;
 //   write?: boolean;
 // }
+
+export const MY_TOKEN = new HttpContextToken<boolean>(() => false);
 
 export function loadPermission() {
   return {
