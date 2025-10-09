@@ -18,8 +18,7 @@ export class HttpService {
     params?: HttpParams,
     context?: HttpContext
   ): Observable<T> {
-    if (loader) this.loadingService.isLoading = true;
-    else this.loadingService.isLoading = false;
+    this.loadingService.isLoading = loader;
     return this.http.get<T>(url, { params, context }).pipe(take(1),finalize(() => {
       this.loadingService.isLoading = false;
     }));

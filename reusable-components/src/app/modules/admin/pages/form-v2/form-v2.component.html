@@ -13,16 +13,11 @@
                     @for (innerGrp of getInnerArray(i).controls; track innerGrp; let j = $index; let last = $last) {
                     <div [formGroupName]="j" class="inner">
 
+                      <ng-container *ngTemplateOutlet="template()!;context:{inner:innerGrp,formMetaData:formMetaData()}"></ng-container>
 
-                        <!-- @for(innerCtrl of innerGrp | keyvalue; track innerCtrl.key)
-                        {
-                        <input type="text" [formControlName]="innerCtrl.key" />
-
-                        } -->
-
-                        <input type="text" formControlName="name" />
+                        <!-- <input type="text" formControlName="name" />
                         <input type="text" formControlName="age" />
-                        <input type="text" formControlName="gender" />
+                        <input type="text" formControlName="gender" /> -->
                         <button type="button" class="remove-inner" (click)="removeInner(i, j)">
                             <i class="bi bi-x"></i>
                         </button>

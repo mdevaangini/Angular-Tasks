@@ -1,3 +1,4 @@
+import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   contentChildren,
@@ -7,15 +8,14 @@ import {
   TemplateRef,
   viewChild,
 } from '@angular/core';
-import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
-import { TabInfo } from '../model/tab-info.interface';
-import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { LoadingService } from '../../core/services/loading.service';
 import { MockApiService } from '../../core/services/mock-api.service';
+import { TemplateMetaDataDirective } from '../directives/template-meta-data.directive';
+import { TabInfo } from '../model/tab-info.interface';
 
 @Component({
   selector: 'dm-tab-2',
-  imports: [NgTemplateOutlet, JsonPipe],
+  imports: [NgTemplateOutlet,JsonPipe],
   templateUrl: './tab-2.component.html',
   styleUrl: './tab-2.component.scss',
 })
@@ -58,7 +58,6 @@ export class Tab2Component {
   data = signal('');
 
   ngOnInit() {
-    console.log(this.loadingService.isLoading);
     this.mockService.getAllJsonData().subscribe({
       next: (res: any) => this.data.set(res),
       error: (err) => console.log('Tab Components: ', err),

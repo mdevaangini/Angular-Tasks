@@ -18,7 +18,15 @@ tabs can be lets say 3 but not necessary that content will be the same, here ng-
 
 -->
 
-<!-- <app-form-v2 [userFormGroup]="userFormGroup" /> 
  
-    To see if i can have dynamic form group as input
--->
+
+<app-form-v2 [formMetaData]="formMetaData">
+    <ng-template let-inner="inner" let-formMetaData="formMetaData">
+    <div [formGroup]="inner" class="inner">
+        @for(controlName of getControlNames(inner); track $index)
+        {
+            <input [type]="formMetaData[controlName].type" [formControlName]="controlName" [placeholder]="formMetaData[controlName].placeholder"/>
+        }
+    </div>
+   </ng-template>
+</app-form-v2> 

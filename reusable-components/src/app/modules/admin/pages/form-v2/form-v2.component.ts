@@ -1,9 +1,11 @@
-import { CommonModule, JsonPipe, KeyValuePipe } from '@angular/common';
+import { CommonModule, JsonPipe, KeyValuePipe, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  contentChild,
   inject,
   input,
+  TemplateRef,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -17,7 +19,7 @@ import {
 @Component({
   selector: 'app-form-v2',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, JsonPipe, KeyValuePipe],
+  imports: [ReactiveFormsModule, CommonModule,NgTemplateOutlet],
   templateUrl: './form-v2.component.html',
   styleUrls: ['./form-v2.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +27,10 @@ import {
 export class FormV2Page {
   mainForm = new FormGroup<any>({});
 
-  userFormGroup = input.required<FormGroup<any>>();
+  // userFormGroup = input.required<FormGroup<any>>();
+
+  formMetaData = input.required<any>();
+  template = contentChild(TemplateRef<any | undefined>)
 
   ngOnInit() {
     this.mainForm = new FormGroup({
@@ -41,13 +46,26 @@ export class FormV2Page {
     });
   }
 
+  
   createInner() {
     // return this.userFormGroup();
-    return new FormGroup({
-      name: new FormControl('', Validators.required),
-      age: new FormControl(''),
-      gender: new FormControl('', Validators.required),
-    });
+
+    let formGroup:any = {};
+    for(let key in this.formMetaData())
+    {
+      formGroup[key]=new FormControl('', Validators.required);
+    }
+
+    console.log(formGroup);
+    return new FormGroup(formGroup);
+
+
+
+    // return new FormGroup({
+    //   name: new FormControl('', Validators.required),
+    //   age: new FormControl(''),
+    //   gender: new FormControl('', Validators.required),
+    // });
   }
 
   get outer() {
