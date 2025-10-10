@@ -1,0 +1,11 @@
+input {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #ef4444;
+}

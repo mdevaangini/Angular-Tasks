@@ -10,6 +10,7 @@ import { FormV2Page } from '../form-v2/form-v2.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TabsComponent } from '../../../../shared/tab-v1/tabs.component';
 import { JsonPipe, KeyValuePipe } from '@angular/common';
+import { FormMetaData } from '../../../../shared/model/form.interface';
 
 @Component({
   selector: 'app-tabs-page',
@@ -28,7 +29,7 @@ export class TabsPage {
   activeTab = signal('Tab 2');
 
 
-  formMetaData = {
+  formMetaData:FormMetaData = {
     name: { type: 'text', placeholder: 'Name' },
     age: { type: 'number', placeholder: 'Age' },
     gender: { type: 'text',placeholder: 'Gender' },

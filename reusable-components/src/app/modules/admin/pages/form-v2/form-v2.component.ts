@@ -48,19 +48,18 @@ export class FormV2Page {
 
   
   createInner() {
-    // return this.userFormGroup();
-
+    // user is providing form controls
     let formGroup:any = {};
     for(let key in this.formMetaData())
     {
       formGroup[key]=new FormControl('', Validators.required);
     }
 
-    console.log(formGroup);
     return new FormGroup(formGroup);
 
 
 
+    // component itself is providing form controls
     // return new FormGroup({
     //   name: new FormControl('', Validators.required),
     //   age: new FormControl(''),

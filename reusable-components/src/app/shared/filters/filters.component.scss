@@ -1,0 +1,29 @@
+.container{
+    max-width: 650px;
+    margin: 40px auto;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+button{
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filterActions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}

@@ -91,4 +91,9 @@ export const ADMIN_ROUTES: Route[] = [
     loadComponent: () =>
       import('./pages/form-v2/form-v2.component').then((m) => m.FormV2Page),
   },
+  {
+    path: 'filters-v1',
+    loadComponent: () =>
+      import('./pages/filters/filters.component').then((m) => m.FiltersPage),
+  },
 ];

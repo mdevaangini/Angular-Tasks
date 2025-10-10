@@ -6,7 +6,7 @@ export type Module =
   | 'pagination'
   | 'form'
   | 'popup'
-  | 'tab';
+  | 'tab' | 'filters';
 
 // export interface Permissions {
 //   [k: string]: PermissionFlags;
@@ -77,6 +77,13 @@ export function loadPermission() {
       },
       v2: {
         read: false,
+        write: false,
+      },
+      allowed: true,
+    },
+    filters: {
+      v1: {
+        read: true,
         write: false,
       },
       allowed: true,

@@ -1,0 +1,6 @@
+
+<dm-filters [filtersMetaData]="filtersMetaData" (search)="searchFilters($event)" (clear)="clearFilters($event)">
+  <ng-template let-filtersMetaData="filtersMetaData" let-formGroup="formGroup" let-control="control">
+      <input [type]="filtersMetaData()[control].type" [value]="filtersMetaData()[control].defaultvalue" [formControl]="formGroup.get(control)" [placeholder]="filtersMetaData()[control].placeholder"/>
+  </ng-template>
+</dm-filters>

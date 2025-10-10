@@ -1,0 +1,16 @@
+
+<div class="container">
+<form [formGroup]="filterFormGroup" class="form">
+    @for(control of getControls();track control)
+    {
+        <ng-container *ngTemplateOutlet="inputsTemplate()!;context:{filtersMetaData:filtersMetaData,formGroup:this.filterFormGroup,control:control}"></ng-container>
+    }
+</form>
+    <div class="filterActions">
+    <button type="button" (click)="searchFilters()">Search</button>
+    <button type="button" (click)="clearFilters()">Clear</button>
+    </div>
+
+</div>
+
+
