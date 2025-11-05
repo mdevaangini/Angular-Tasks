@@ -50,3 +50,51 @@
         <button type="submit" class="add-outer">Submit</button>
     </form>
 </div>
+
+
+<!-- i saw a problem here , when i'm looping here @for and if i track via index then code level it is working fine but in UI only the last group is getting deleted , but when i use track innerGrp then it worked fine -->
+
+
+<!-- This is a common Angular tracking issue with nested FormArrays. Let me explain what's happening:
+The Problem
+When you use track $index, Angular tracks items by their position in the array. When you remove an item:
+
+All items after the removed item shift up one position
+Angular sees the indices have changed and tries to reuse the DOM elements
+The form controls get mismatched with the DOM, causing the wrong item to appear deleted
+
+Why track innerGrp Works
+When you track by the actual form group object reference, Angular correctly identifies which specific form group was removed and removes the correct DOM element.
+Best Practice Solution
+For FormArrays, always track by the control itself or a unique identifier: 
+            // ✅ Correct - track by form group reference
+            @for (outerGrp of outer.controls; track outerGrp; let i = $index) {
+
+            // ✅ Also correct if you have unique IDs
+            @for (outerGrp of outer.controls; track outerGrp.value.id; let i = $index) {
+
+            // ❌ Incorrect - causes the issue you experienced
+            @for (outerGrp of outer.controls; track $index; let i = $index) {
+
+
+
+
+            Why This Matters
+                Angular's change detection relies on the tracking expression to determine:
+
+                Which DOM nodes to reuse
+                Which ones to create
+                Which ones to destroy
+
+                With form controls, tracking by index breaks this because:
+
+                FormArray index 0 might have FormGroup A
+                After deletion, FormArray index 0 now has FormGroup B
+                Angular thinks "index 0 still exists, just update it" instead of "FormGroup A was removed"
+
+                Your fix of using track innerGrp is the correct solution! Apply the same to your outer loop for consistency.
+
+
+                or instead of @for we can also use *ngFor directive with trackBy function to achieve the same result.
+
+-->

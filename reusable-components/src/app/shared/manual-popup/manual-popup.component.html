@@ -25,3 +25,44 @@
     </footer>
 </div>
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- conext:{close:closeModal.bind(this)} 
+    
+    -> This means you are passing the function closeModal, but you are also making sure it remembers which object it belongs to.
+
+    The problem (if you didn’t use .bind(this))
+
+    If you simply did:
+    context: { close: closeModal }
+    then when some other component or modal calls context.close(),
+    the function will run without the original object’s this.
+    So inside closeModal, this would be undefined (or the wrong object).
+    That would cause an error like:
+    ==> Cannot read property 'isOpen' of undefined
+
+
+
+    The fix (why .bind(this) is used)
+    .bind(this) creates a new function where the value of this is permanently set to the current object.
+    So:
+    closeModal.bind(this)
+    means:
+    “Hey, make a new version of closeModal that always uses this current object (the one in which this line is written) as this.”
+    So even if another component calls context.close(),
+    it will still correctly refer to the original object’s this.
+
+    means it created a closure that remembers the original this context.
+
+-->

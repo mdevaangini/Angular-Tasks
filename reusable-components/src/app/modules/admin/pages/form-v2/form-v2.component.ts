@@ -80,7 +80,7 @@ export class FormV2Page {
   }
 
   getInnerArray(outerIndex: number) {
-    return this.outer.at(outerIndex).get('inner') as FormArray;
+    return this.outer.at(outerIndex).get('inner') as FormArray; //so that we can get the functions of FormArray without it we cant get recommended functions
   }
 
   addInner(outerIndex: number) {

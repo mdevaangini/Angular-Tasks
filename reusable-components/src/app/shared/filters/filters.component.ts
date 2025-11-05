@@ -36,7 +36,7 @@ export class FiltersComponent {
   }
 
   searchFilters(){
-    console.log(this.filterFormGroup.value);
+    console.log(this.filterFormGroup.getRawValue());
     this.search.emit(true);
   }
 

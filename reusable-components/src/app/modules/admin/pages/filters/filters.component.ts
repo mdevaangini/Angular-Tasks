@@ -35,7 +35,7 @@ export class FiltersPage {
     name:{ type: 'text', placeholder: 'Name',optional:false,defaultvalue:'Devaangini'},
     age:{ type: 'number', placeholder : 'Age',optional:false,defaultvalue:''},
     gender:{ type: 'text', placeholder : 'Gender',optional:false,defaultvalue:''},
-    date:{ type: 'date', placeholder : 'Date',optional:true,defaultvalue:''},
+    date:{ type: 'date', placeholder : 'Date',optional:true,defaultvalue:new Date()},
   }
 
   searchFilters(event:boolean){
